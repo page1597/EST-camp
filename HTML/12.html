@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sections</title>
+  </head>
+  <body>
+    <!-- header: 페이지 소개 / 회사명, 제목, 로고, 검색 폼, 작성자 이름 등 -->
+    <header>
+      <!-- h1은 페이지당 하나만 넣는게 좋음 -->
+      <h1>EST</h1>
+
+      <!-- nav: navigation bar. 탐색 메뉴들, 브레드크럼. 대부분 header 태그 안에 넣음 -->
+      <nav>
+        <ul>
+          <a href="#">위니브</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- main: body의 주요 콘텐츠 -->
+    <main>
+      <!-- section
+        : 문서 내에서 특정 섹션 정의, 일반적으로 주제나 컨텐츠를 구분
+        뉴스의 사회면 / 연예면 각각 부분을 나타냄
+        제목 요소를 자식으로 포함하여야 함 
+        > 연결성 <
+      -->
+      <section>
+        <h2>뉴스</h2>
+        <article>
+          <h3>Article</h3>
+          <p>Content</p>
+        </article>
+        <article>
+          <h3>Article</h3>
+          <p>Content</p>
+        </article>
+        <article>
+          <h3>Article</h3>
+          <p>Content</p>
+        </article>
+      </section>
+    </main>
+    <!-- main 에 들어가는건 section. 광고는 aside. 헷갈린다 하면 일단 section 사용하는게 -->
+
+    <!-- 
+        article
+        : 독립적으로 구분해 배포하거나 재사용할 수 있는 구획
+        사이트의 다른 기능에 영향을 주지 않고 독립적인 기능 수행
+        아티클 영역을 제거해도 페이지는 정상적으로 돌아감
+        메인 흐름과 관련 없는
+        ex) 뉴스 홈페이지. 시간마다 노출되는 기사가 달라져도 홈페이지는 정상적으로 운영됩니다.  
+        게시판, 블로그 글, 매거진, 뉴스기사, 날씨 위젯, 실시간 채팅 창, 챗봇 아이콘 등
+        * 제목 요소(h2)를 자식으로 포함하여야 함, section, header도 마찬가지
+        > 독립성 <
+    -->
+    <article></article>
+
+    <!-- 
+        aside   
+        : 문서의 주요 내용과 간접적으로 연관된 부분을 나타냄
+        문서의 주요 흐름을 따라가지 않고, 보조적인 역할만 하는 공간
+        각주, 광고 배너, 사이드바 등
+    -->
+    <!-- 사이드바. main태그 안에 포함되지 않음 -->
+    <!-- 광고 같은 경우라면 main 안에 넣어줘도 됨 -->
+    <aside>
+      <h2>광고</h2>
+      <p>content</p>
+    </aside>
+
+    <!-- 내용적으로 전환될 때. 스타일 때문에는 잘 사용하지 않음. p태그 안에 사용하진 않음 -->
+    <hr />
+
+    <!-- footer -->
+    <footer>
+      <h2>EST 사업자 정보</h2>
+      <address>
+        <dl>
+          <dt></dt>
+          <dt></dt>
+        </dl>
+      </address>
+    </footer>
+  </body>
+</html>
