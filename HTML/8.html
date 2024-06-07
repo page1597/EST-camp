@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table 심화</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+
+        text-align: center;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      caption {
+        caption-side: top;
+        font-weight: bold;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+      .weekend {
+        background-color: whitesmoke;
+        color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        구매 내역
+      </caption>
+      <thead>
+        <tr>
+          <th id="purchase">구매 항목</th>
+          <th id="location">장소</th>
+          <th id="date">날짜</th>
+          <th id="color">색상</th>
+          <th id="cost">비용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th id="mac">맥북</th>
+          <td headers="location mac">가로수길 애플스토어</td>
+          <td headers="date mac">12/09</td>
+          <td headers="color mac">실버</td>
+          <td headers="cost mac">1,900,000</td>
+        </tr>
+        <tr>
+          <th id="pen">펜</th>
+          <td headers="location pen">문구점</td>
+          <td headers="date pen">11/2</td>
+          <td headers="color pen">노란색</td>
+          <td headers="cost pen">800,000</td>
+        </tr>
+        <tr>
+          <th id="eraser">지우개</th>
+          <td headers="location eraser">문구점</td>
+          <td headers="date eraser">11/2</td>
+          <td headers="color eraser">흰색</td>
+          <td headers="cost eraser">900,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
