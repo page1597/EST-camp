@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>input</title>
+    <style>
+      input {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="버튼입니다." />
+    <input type="email" />
+    <input type="tel" />
+    <input type="checkbox" />
+    <input type="radio" />
+    <input type="date" />
+    <input type="datetime-local" />
+    <input type="month" />
+    <input type="time" />
+    <label for="profile">프로필 이미지</label>
+    <input
+      type="file"
+      id="profile"
+      name="profile"
+      accept="image/png, image/jpeg"
+    />
+    <input type="color" />
+    <input type="range" />
+    <input type="search" />
+    <input type="reset" />
+    <input type="hidden" />
+    <input type="text" maxlength="15s" />
+    <input type="number" min="3" step="2" value="0" />
+
+    <!-- 
+        - 단일 값을 선택하거나 선택 해제할 수 있는 체크박스. 다중선택도 가능
+        - 각 체크박스는 서로 독립적으로 작동합니다. 즉, 하나의 체크박스를 선택하거나 해제해도 다른 체크박스에는 영향을 미치지 않습니다. 
+    -->
+    <form>
+      <!-- form에 제목이 필요한 경우 fieldset, legend 사용하기 -->
+      <fieldset class="fieldset">
+        <legend>사용 기술</legend>
+
+        <input type="checkbox" name="html" id="html" />
+        <label for="html">HTML</label>
+
+        <input type="checkbox" name="css" id="css" />
+        <label for="css">CSS</label>
+
+        <input type="checkbox" name="js" id="js" />
+        <label for="js">JavaScript</label>
+
+        <input type="checkbox" name="python" id="python" />
+        <label for="python">Python</label>
+
+        <input type="checkbox" name="django" id="django" />
+        <label for="django">Django</label>
+      </fieldset>
+    </form>
+
+    <!-- 동일한 이름(name)을 가진 라디오 버튼 중 하나만 선택할 수 있습니다. -->
+    <fieldset class="fieldset">
+      <legend>성별</legend>
+      <input type="radio" name="gender" value="male" id="male" />
+      <label for="male">남성</label>
+
+      <input type="radio" name="gender" value="females" id="female" />
+      <label for="female">여성</label>
+
+      <input type="radio" name="gender" value="no" id="no" />
+      <label for="no">선택 안함</label>
+    </fieldset>
+  </body>
+</html>

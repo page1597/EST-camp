@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>video</title>
+  </head>
+  <body>
+    <!-- 첫번째 방법 -->
+    <video
+      src="./assets/rabbit.MOV.mov"
+      width="300"
+      controls
+      loop
+      poster="./assets/rosy-icon.png"
+      preload="none"
+    />
+
+    <!-- 두번째 방법 -->
+    <video width="300" controls>
+      <source src="./assets/rabbit.MOV.mov" />
+    </video>
+
+    <audio src="./assets/CatPurr.mp3" controls></audio>
+  </body>
+</html>
