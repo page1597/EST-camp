@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <!-- fieldset: form 관련 요소들을 묶을 때 사용 -->
+      <fieldset>
+        <legend>브라우저</legend>
+        <label for="browser">사용하는 브라우저를 선택하세요</label>
+        <!-- 자동완성 -->
+        <input list="browsers" id="browser" />
+        <datalist id="browsers">
+          <option value="Chrome"></option>
+          <option value="Firefox"></option>
+          <option value="Safari"></option>
+          <option value="Edge"></option>
+          <option value="IE"></option>
+          <option value="male"></option>
+          <option value="female"></option>
+        </datalist>
+      </fieldset>
+
+      <fieldset>
+        <!-- legend: 그룹의 제목 -->
+        <legend>성별</legend>
+        <!-- radio - name 동일하게 지정 -->
+        <label for="male">남성</label>
+        <input type="radio" name="gender" value="male" id="male" />
+        <label for="female">여성</label>
+        <input type="radio" name="gender" value="female" id="female" />
+      </fieldset>
+
+      <fieldset>
+        <!-- checkbox - name 다르게 지정해줘도 됨 -->
+        <legend>사용 기술</legend>
+        <label for="html">HTML</label>
+        <input type="checkbox" id="html" name="html" value="html" />
+        <label for="css">CSS</label>
+        <input type="checkbox" id="css" name="css" value="css" />
+        <label for="js">JS</label>
+        <input type="checkbox" id="js" name="js" value="js" />
+      </fieldset>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>picture 태그</title>
+  </head>
+  <body>
+    <!-- 장치나 환경에 따라 각기 다른 버전의 이미지를 표시할 수 있습니다. 
+        다양한 크기나 포맷의 이미지를 제공하여, 
+        사용자의 장치와 화면 해상도에 따라 가장 적합한 이미지를 선택할 수 있도록 합니다. 
+        source 태그,  img태그와 함께 쓰입니다. -->
+    <picture>
+      <source srcset="./assets/LiCat.png" media="(max-width: 320px)" />
+      <source srcset="./assets/Wade.png" media="(max-width: 800px)" />
+      <!-- fallback image -->
+      <img src="./assets/Zeezee-solid.png" alt="기본 이미지" />
+    </picture>
+    <picture>
+      <source srcset="image-narrow.jpg" media="(max-width: 600px)" />
+      <source srcset="image-wide.jpg" media="(min-width: 601px)" />
+      <img src="image-default.jpg" alt="Art direction example" />
+    </picture>
+  </body>
+</html>

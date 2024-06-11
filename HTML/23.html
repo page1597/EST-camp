@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .modal {
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+      }
+      h2 {
+        font-weight: 500;
+        size: 16px;
+      }
+      p {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+      button {
+        display: flex;
+        border: none;
+        border-radius: 5px;
+        background: transparent;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+      input#id,
+      input#password {
+        display: block;
+        border: 1px solid #c4c4c4;
+        height: 50px;
+        width: 100%;
+        padding-left: 24px;
+        border-radius: 5px;
+        border: 1px 0px 0px 0px;
+      }
+      .remember_me_label {
+        font-size: 16px;
+        font-weight: 500;
+        background: #767676;
+      }
+      a {
+        outline: none;
+        font-size: 14px;
+        font-weight: 400;
+        color: #767676;
+        text-decoration-line: none;
+      }
+      .login {
+        background-color: #2f80ed;
+        border-radius: 5px;
+        height: 50px;
+        color: #ffffff;
+
+        width: 100%;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+      }
+      .google_login_btn {
+        border: 1px solid #767676;
+      }
+      .facebook_login_btn {
+        border: 1px solid #2d9cdb;
+      }
+      .naver_login_btn {
+        border: 1px solid #00bf18;
+      }
+      .kakao_login_btn {
+        border: 1px solid #f2c94c;
+      }
+      ul > li {
+        display: inline;
+      }
+    </style>
+    <title>form 모달 실습</title>
+  </head>
+  <body>
+    <h1 class="sr-only">weniv</h1>
+    <div class="modal">
+      <header>
+        <h2>로그인 또는 회원가입</h2>
+        <button>
+          <img src="./assets/close.png" alt="close" width="16" />
+          <span class="sr-only">닫기 버튼</span>
+        </button>
+      </header>
+
+      <!-- section1 -->
+      <section>
+        <h3 class="sr-only">로그인</h3>
+        <p>위니브에서 여러분의 궁금증을 해결하세요! :)</p>
+        <form action="" method="post">
+          <input type="text" id="id" placeholder="아이디" />
+          <input type="password" id="password" placeholder="비밀번호" />
+          <br />
+          <input type="checkbox" id="remember_me" />
+          <!-- <img src="./assets/check-box.png" alt="" /> -->
+          <label for="" id="remember_me_label">로그인 상태 유지</label>
+          <button type="submit" class="login">로그인</button>
+        </form>
+        <ul>
+          <li>
+            <a href="/">회원가입</a>
+          </li>
+          <span>|</span>
+          <li><a href="/">아이디/비밀번호 찾기</a></li>
+        </ul>
+      </section>
+
+      <p>- 또는 -</p>
+      <!-- section2 -->
+      <section>
+        <h3 class="sr-only">소셜 계정으로 로그인</h3>
+        <ul>
+          <li>
+            <button id="google_login" class="google_login_btn">
+              <img
+                src="./assets/Google__G__Logo 1.png"
+                alt="google-logo"
+                width="28"
+              />구글 계정으로 로그인
+            </button>
+          </li>
+          <li>
+            <button id="facebook_login" class="facebook_login_btn">
+              <img
+                src="./assets/facebook.png"
+                alt="facebook-logo"
+                width="28"
+              />페이스북 계정으로 로그인
+            </button>
+          </li>
+          <li>
+            <button id="naver_login" class="naver_login_btn">
+              <img
+                src="./assets/naver-logo.png"
+                alt="naver-logo"
+                width="28"
+              />네이버 계정으로 로그인
+            </button>
+          </li>
+          <li>
+            <button id="kakao_login" class="kakao_login_btn">
+              <img
+                src="./assets/message-circle.png"
+                alt="kakao-logo"
+                width="28"
+              />카카오 계정으로 로그인
+            </button>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
