@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color</title>
+    <style>
+      .key {
+        color: crimson;
+      }
+      .code {
+        /* 흰색 */
+        /* color: #ffffff;*/
+        /* 검은색 */
+        /* color: #000;*/
+      }
+      .rgb {
+        color: rgb(0, 0, 255);
+      }
+      /* a: 투명도 */
+      .rgba {
+        color: rgb(0, 0, 255, 0.5);
+      }
+      .transparent {
+        color: transparent;
+      }
+      div {
+        color: aqua;
+      }
+      /* currentColor! */
+      p {
+        border: 1px solid currentColor;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p class="key">안녕하세요</p>
+      <p class="code">안녕하세요</p>
+      <p class="rgb">안녕하세요</p>
+      <p class="rgba">안녕하세요</p>
+      <p class="transparent">안녕하세요</p>
+    </div>
+  </body>
+</html>

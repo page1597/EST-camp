@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>특성 선택자</title>
+    <style>
+      [type="button"] {
+        border: 0;
+        cursor: pointer;
+      }
+      /* ^는 ~로 시작한다는 의미 */
+      [class^="btn"] {
+        background-color: aqua;
+        color: blanchedalmond;
+      }
+      /* $는 ~로 끝난다는 의미 */
+      [class$="btn"] {
+        background-color: red;
+        color: aquamarine;
+      }
+      /* *는 ~라는 단어를 포함한다는 의미 */
+      [class*="btn"] {
+        font-weight: bold;
+      }
+      /* 클래스 이름에 "btn"이 포함되지 않은 모든 요소를 선택 */
+      [class]:not([class*="btn"]) {
+        background-color: green; /* 원하는 배경색 /
+        color: white; / 원하는 글자색 */
+      }
+      a[href] {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" value="버튼" />
+    <input type="button" value="버튼" />
+    <input type="text" class="btn-first" value="버튼" />
+    <input type="text" class="second-btn" value="버튼" />
+    <input type="text" class="second" value="버튼" />
+    <a href="naver.com">네이버로 이동</a>
+    <a>이동하지 않음</a>
+  </body>
+</html>

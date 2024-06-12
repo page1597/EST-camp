@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자손 선택자</title>
+    <style>
+      section p {
+        font-weight: bold;
+      }
+      section > p {
+        color: royalblue;
+      }
+      /* 일반 형제 선택자 뒤에 나오는 형제만 선택*/
+      section ~ p {
+        text-decoration: underline;
+      }
+      /* 바로 뒤에 인접한 형제만 선택합니다. */
+      section + p {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <section>
+      <div><p>p</p></div>
+      <p>p</p>
+      <p>p</p>
+    </section>
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+  </body>
+</html>
