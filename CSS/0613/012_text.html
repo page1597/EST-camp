@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>word break</title>
+    <style>
+      p {
+        background-color: blueviolet;
+        width: 500px;
+        word-break: break-all;
+        word-break: keep-all;
+        /* word-break: break-all; */
+
+        /* 1줄 말줄임처리*/
+        /*
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        */
+
+        /* 여러줄 말줄임처리 */
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque, quos
+      totam! Commodi tempora libero explicabo corrupti delectus ducimus veniam
+      autem, assumenda illo! Asperiores quos itaque fugiat reiciendis laborum
+      recusandae quam? Nobis ex est magnam minus quasi. Consectetur officiis,
+      voluptates quibusdam eaque aliquam temporibus officia aliquid ipsum ipsam
+      quis ex, voluptate possimus fugiat corporis quas! Illo magnam dolores
+      consequatur repellat dignissimos.
+    </p>
+  </body>
+</html>

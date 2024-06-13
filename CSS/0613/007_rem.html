@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 개인적으로 폰트 사이즈는 rem으로 설정하고 -->
+    <!-- 폰트에 크기에 따라 조절이 되야 하는 값들은 em으로 설정합니다. -->
+    <style>
+      /* html {
+         font-size: 10px; 
+      }*/
+      .container {
+        font-size: 10px;
+        background-color: aqua;
+      }
+      .container div {
+        border: 1px solid black;
+      }
+      .item1 {
+        /* 20px: 부모요소인 container의 폰트 사이즈는 10px */
+        font-size: 2em;
+      }
+      .item2 {
+        /* 32px 이유: <html>의 기본 폰트 사이즈는 16px */
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item1">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus eos
+        iure doloremque quam magni. Magnam, accusamus tempora. Maiores, quas
+        aspernatur! Modi non itaque omnis, autem aspernatur illo repellendus qui
+        facilis!
+      </div>
+      <div class="item2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, a
+        delectus. Harum et, praesentium error quae dolore at aut sapiente, ipsa
+        quo fuga veniam blanditiis modi odio laudantium quos excepturi.
+      </div>
+    </div>
+  </body>
+</html>

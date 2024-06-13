@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구조적 가상 선택자</title>
+    <style>
+      li {
+        background-color: #eee;
+        margin-bottom: 20px;
+      }
+      li:first-child {
+        color: red;
+      }
+      li:nth-child(even) {
+        color: blue;
+      }
+      div p:nth-of-type(3) {
+        color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p class="t1">안녕</p>
+      <p class="t1">안녕</p>
+      <p class="t1">안녕</p>
+      <p class="t1">안녕</p>
+      <p class="t1">안녕</p>
+      <p class="t2">안녕</p>
+      <p class="t2">안녕</p>
+      <p class="t2">안녕</p>
+      <p class="t2">안녕</p>
+      <p class="t2">안녕</p>
+      <ol>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+        <li>텍스트</li>
+      </ol>
+    </div>
+  </body>
+</html>
