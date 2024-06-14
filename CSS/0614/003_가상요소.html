@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가상 요소</title>
+    <style>
+      p::before {
+        content: "1기 두부 여러분 ";
+        font-weight: bold;
+        color: hotpink;
+      }
+      p::after {
+        content: "굿굿";
+      }
+      /*img, br, input 태그는 닫는 태그가 없기 때문에 부모가 될 수 없음 
+      -> 가상요소를 자식으로 넣어줄 수 없다.
+      */
+      /*img::before {
+        content: "이미지에는 사용할 수 없습니다.";
+      }
+      br::before {
+        content: "br태그에는 사용할 수 없습니다.";
+      }
+      input::before {
+        content: "input에는 사용할 수 없습니다.";
+      }*/
+      input {
+        /* placeholer 글자 색상은 변경되지 않음 */
+        color: aquamarine;
+      }
+      input::placeholder {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <p>빈태그</p>
+    <p>
+      여러줄 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+      quo veritatis dolorum maiores obcaecati recusandae quam iusto voluptatem
+      deleniti at explicabo pariatur doloremque exercitationem dolor sequi
+      deserunt, minima praesentium labore.
+    </p>
+    <p>
+      <strong>안녕하세요</strong>
+      <strong>안녕하세요</strong><strong>안녕하세요</strong>
+      <strong>안녕하세요</strong><strong>안녕하세요</strong>
+    </p>
+    <!-- 닫는 태그가 없으므로 이 요소들은 부모 요소가 될 수 없음.
+    그래서 가상 요소 적용 불가 -->
+    <br />
+    <img src="../0613/images/image.png" alt="" />
+    <input type="text" placeholder="이름을 적어주세요." />
+  </body>
+</html>

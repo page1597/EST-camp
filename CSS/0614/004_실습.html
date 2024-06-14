@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습</title>
+    <style>
+      .container > div {
+        display: inline-block;
+        font-size: 18px;
+        padding: 10px;
+      }
+      .container > div:nth-child(1) {
+        background-color: red;
+      }
+      .container > div:nth-child(2) {
+        background-color: orange;
+      }
+      .container > div:nth-child(3) {
+        background-color: yellow;
+      }
+      .container > div:nth-child(4) {
+        background-color: green;
+      }
+      .container > div:nth-child(5) {
+        background-color: blue;
+      }
+      .container > div:nth-child(6) {
+        background-color: navy;
+      }
+      .container > div:nth-child(7) {
+        background-color: purple;
+      }
+      .container div:first-child,
+      div:last-child {
+        border: 10px solid black;
+      }
+
+      div:nth-child(2n) {
+        color: white;
+      }
+      li {
+        font-size: 18px;
+      }
+      li:first-child:before {
+        content: "🦊";
+      }
+      li:not(:first-child)::before {
+        content: "💙";
+      }
+      li::after {
+        color: rgb(125, 125, 125);
+        font-size: 12px;
+        content: "강사님";
+        margin-left: 6px;
+      }
+      li:last-child::after {
+        content: "멘토님";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>빨강</div>
+      <div>주황</div>
+      <div>노랑</div>
+      <div>초록</div>
+      <div>파랑</div>
+      <div>남색</div>
+      <div>보라</div>
+    </div>
+    <ul>
+      <li>지지</li>
+      <li>로지</li>
+      <li>웨이드</li>
+      <li>하티</li>
+      <li>라이캣</li>
+      <li>개리</li>
+      <li>빙키</li>
+    </ul>
+  </body>
+</html>
