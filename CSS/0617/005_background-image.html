@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-image: url("../0613/images/image.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      div::before {
+        content: "";
+        display: block;
+        background-image: url("../0613/images/image.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 문맥상 필요한 정보를 제공하지 않고 디자인적 요소일 경우 -->
+    <div></div>
+    <!-- 문맥상 필요한 정보를 제공할 때 -->
+    <img src="../0613/images/image.png" alt="박명수" />
+    <!-- 필요한 정보가 중복될 때 -->
+    <img src="../0613/images/image.png" alt="" />
+    <span>박명수</span>
+  </body>
+</html>

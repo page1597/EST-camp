@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: mediumslateblue;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        margin-right: 20px;
+      }
+      #one {
+        border-radius: 50px;
+      }
+      #two {
+        border-radius: 10px;
+      }
+      #three {
+        border-radius: 100px 0 0 0;
+      }
+      #four {
+        border-radius: 100px 0 100px 0;
+      }
+      #five {
+        border-radius: 0 50px 0 50px;
+      }
+      #six {
+        height: 50px;
+        border-radius: 100px 100px 0 0;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="five"></div>
+    <div style="background-color: white">
+      <div id="six"></div>
+    </div>
+  </body>
+</html>
