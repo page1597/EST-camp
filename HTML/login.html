@@ -4,30 +4,91 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
     <title>로그인</title>
+    <style>
+      section {
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 18px 16px;
+        margin: 30px;
+      }
+      .a11y-hidden {
+        display: none;
+      }
+      section p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        margin: 0;
+      }
+      section button {
+        background: #711bff;
+        border: none;
+        border-radius: 4px;
+        padding: 11px 108px;
+        display: block;
+        margin: 16px 0;
+      }
+      section button span {
+        color: #fff;
+        font-weight: 500;
+        font-size: 12px;
+        margin-left: 4px;
+        display: inline;
+        vertical-align: middle;
+      }
+
+      .container-idpw {
+        color: #767676;
+        font-size: 12px;
+        line-height: 15px;
+        display: inline;
+        vertical-align: middle;
+        gap: 4px;
+      }
+      img {
+        display: inline;
+        vertical-align: middle;
+      }
+      a {
+        text-decoration: none;
+        color: #767676;
+        font-size: 12px;
+        line-height: 15px;
+      }
+      .container-signup {
+        display: inline;
+        float: right;
+        line-height: 15px;
+
+        vertical-align: middle;
+        gap: 4px;
+      }
+    </style>
   </head>
   <body>
     <!-- <h1></h1> -->
     <!-- <main> -->
     <section>
-      <h2>로그인</h2>
+      <h2 class="a11y-hidden">로그인</h2>
       <p>더 편리해진 위니브에 오신 것을 환영합니다.</p>
       <!-- 로그인 모달 오픈 버튼 -->
       <button>
-        <img src="./assets/weniv-logo.png" alt="weniv-logo" width="100" />
+        <img src="./assets/weniv-logo.png" alt="weniv-logo" width="64" />
         <span>로그인</span>
       </button>
 
       <!-- 아이디 | 비밀번호 찾기로 이동 -->
-      <div>
-        <img src="./assets/icon-lock.png" alt="" width="20" />
+      <div class="container-idpw">
+        <img src="./assets/icon-lock.png" alt="" width="16" />
         <a href="#">아이디</a>
         <span>|</span>
         <a href="#">비밀번호찾기</a>
       </div>
 
       <!-- 회원가입으로 이동 -->
-      <div>
-        <img src="./assets/icon-user.png" alt="" width="20" />
+      <div class="container-signup">
+        <img src="./assets/icon-user.png" alt="" width="16" />
         <a>회원가입</a>
       </div>
     </section>

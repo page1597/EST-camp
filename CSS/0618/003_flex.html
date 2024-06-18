@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        background-color: #ddd;
+        height: 300px;
+        flex-wrap: wrap;
+        align-content: center;
+
+        /* 주축을 기준으로 정렬하는 속성 */
+        /* flex-direction: column-reverse; */
+
+        /* 
+        justify-content: center;
+        justify-content: flex-end;
+        justify-content: space-evenly;
+        */
+      }
+      .item {
+        background-color: aqua;
+        border: 1px solid black;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-float">
+      <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+      </div>
+    </div>
+  </body>
+</html>

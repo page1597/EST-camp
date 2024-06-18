@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        border: 1px solid salmon;
+      }
+      img {
+        float: right;
+      }
+      .clear {
+        /* float 속성 해제 */
+        clear: both;
+        /* clear: right; */
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+      }
+      .box1 {
+        background-color: blanchedalmond;
+        float: left;
+      }
+      .box2 {
+        background-color: blueviolet;
+        float: left;
+      }
+      .box3 {
+        background-color: beige;
+        float: left;
+      }
+      .container {
+        background: aqua;
+        /* 방법 1 */
+        /* height: 100px; */
+
+        /* 방법 2 */
+        /* overflow: hidden; */
+      }
+      /* 방법 3 */
+      .clear-fix::after {
+        content: "";
+        display: block;
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./images/200x150.png" alt="" />
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos odio minus
+      veniam molestias odit sint, ex blanditiis accusantium asperiores amet, a
+      nam dignissimos tempora sapiente veritatis dolores culpa deleniti ipsa?
+      Corrupti ipsam, amet quos recusandae, autem adipisci atque maiores
+      <!-- incidunt rem cumque exercitationem aspernatur, nam delectus placeat.
+      Tempora culpa, nihil deserunt quisquam incidunt animi, reprehenderit
+      maxime, aut quibusdam consequatur impedit. Quaerat velit et quas numquam
+      adipisci eaque suscipit libero fugiat non, sunt perferendis natus qui
+      dolor iure quisquam, debitis voluptatum ducimus aliquid? Maiores, magnam
+      fugiat cum dolores molestiae eum nemo. Lorem ipsum dolor sit, amet
+      consectetur adipisicing elit. Omnis, perferendis rem recusandae
+      voluptatibus obcaecati tempore eius suscipit atque beatae modi
+      necessitatibus amet tenetur! Nihil eaque id, autem minima dolor expedita. -->
+    </p>
+    <p class="clear">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+      laudantium totam molestias quae officiis doloribus eligendi ea quisquam
+      debitis blanditiis vero repudiandae, iusto mollitia error qui illo quo
+      consequatur dignissimos.
+    </p>
+    <div class="container clear-fix">
+      container
+      <div class="box box1">A</div>
+      <div class="box box2">B</div>
+      <div class="box box3">C</div>
+    </div>
+  </body>
+</html>
