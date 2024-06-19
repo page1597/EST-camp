@@ -47,7 +47,6 @@
         gap: 4px;
       }
       img {
-        display: inline;
         vertical-align: middle;
       }
       a {
@@ -60,7 +59,6 @@
         display: inline;
         float: right;
         line-height: 15px;
-
         vertical-align: middle;
         gap: 4px;
       }
@@ -69,28 +67,28 @@
   <body>
     <!-- <h1></h1> -->
     <!-- <main> -->
+    <!-- 불필요한 태그 되도록이면 쓰지 않기 -->
     <section>
       <h2 class="a11y-hidden">로그인</h2>
       <p>더 편리해진 위니브에 오신 것을 환영합니다.</p>
       <!-- 로그인 모달 오픈 버튼 -->
       <button>
-        <img src="./assets/weniv-logo.png" alt="weniv-logo" width="64" />
-        <span>로그인</span>
+        <img src="./assets/weniv-logo.png" alt="weniv" width="64" />
+        로그인
       </button>
 
       <!-- 아이디 | 비밀번호 찾기로 이동 -->
-      <div class="container-idpw">
-        <img src="./assets/icon-lock.png" alt="" width="16" />
-        <a href="#">아이디</a>
-        <span>|</span>
-        <a href="#">비밀번호찾기</a>
-      </div>
+      <img src="./assets/icon-lock.png" alt="" width="16" />
+      <a href="#">아이디</a>
+
+      <!-- 가상요소 ::before ::after로 넣어주는 것이 더 좋을듯 -->
+      <span>|</span>
+
+      <a href="#">비밀번호찾기</a>
 
       <!-- 회원가입으로 이동 -->
-      <div class="container-signup">
-        <img src="./assets/icon-user.png" alt="" width="16" />
-        <a>회원가입</a>
-      </div>
+      <img src="./assets/icon-user.png" alt="" width="16" />
+      <a>회원가입</a>
     </section>
     <!-- </main> -->
   </body>

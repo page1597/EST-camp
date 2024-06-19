@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .one ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        /* flex-wrap: wrap; */
+        gap: 5px;
+        flex-direction: row;
+      }
+      .one > li {
+        width: 50px;
+        height: 50px;
+        background-color: teal;
+        list-style: none;
+        border: 1px solid black;
+        /* flex-grow: 1; */
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+      nav ul {
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="one">
+      <!-- order가 없는 애들(order: 0)이 먼저 온다. 그래서 2,3,4,3,1 이렇게 정렬됨 -->
+      <li style="order: 2"><a href="">1</a></li>
+      <li><a href="">2</a></li>
+      <li style="order: 1"><a href="">3</a></li>
+      <li><a href="order: -1">4</a></li>
+      <li><a href="order: 0">5</a></li>
+
+      <!-- <li style="align-self: flex-end"><a href="">1</a></li>
+      <li style="flex-grow: 5"><a href="">2</a></li> -->
+    </ul>
+    <section>
+      <nav>
+        <ul>
+          <li style="margin-right: auto"><a href="">HOME</a></li>
+          <li><a href="">PEOPLE</a></li>
+          <li><a href="">CONTACT</a></li>
+        </ul>
+      </nav>
+    </section>
+  </body>
+</html>
