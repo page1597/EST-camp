@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: grid;
+        /* grid-template-columns: 2fr repeat(3, 1fr) 3fr; */
+
+        /* 아래 코드에서는 최소값인 150px을 기준으로 새로운 컬럼을 만들지 결정합니다. */
+        /* grid-template-columns: repeat(4, minmax(150px, 100px));*/
+        /* auto-full: 여백공간 남을 수 있음. auto-fill: 여백공간 x */
+
+        /*
+        grid-template-rows: 2fr 1fr;
+        gap: 20px;
+        background-color: yellowgreen;
+        align-content: end;
+        justify-content: start;
+        height: 600px;
+        width: 500px;
+        align-items: end;*/
+
+        /* grid-auto-rows: 150px */
+        gap: 10px;
+        align-items: center;
+        grid-template-columns: repeat(4, 100px);
+        grid-auto-rows: 150px;
+        grid-template-areas:
+          "header header header"
+          "section section aside"
+          "footer footer footer";
+        justify-content: center;
+      }
+      .item {
+        border: 1px solid black;
+      }
+      .item1 {
+        align-self: self-end;
+        /* grid-row-start: 1;
+        grid-column-start: 1;
+        grid-row-end: 3;
+        grid-column-end: 3; */
+        justify-self: start;
+        /*grid-area: 1/1/2/-1;*/
+        grid-area: header;
+      }
+      .item2 {
+        /* grid-area: 2/1 / span 2/2;*/
+        grid-area: section;
+        background-color: rosybrown;
+      }
+      .item3 {
+        /* grid-area: 2/2 / span 2/-1; */
+        grid-area: aside;
+        background-color: royalblue;
+      }
+      .item4 {
+        /* grid-area: 4/1/-1/-1; 이 제대로 적용되지 않음..*/
+        /*grid-area: 4/1/5/5;*/
+        grid-area: footer;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item1">item1</div>
+      <div class="item item2">item2</div>
+      <div class="item item3">item3</div>
+      <div class="item item4">item4</div>
+      <!-- <div class="item item5">item5</div>
+      <div class="item item6">item6</div>
+      <div class="item item7">item7</div>
+      <div class="item item8">item8</div>
+      <div class="item item9">item9</div>
+      <div class="item item10">item10</div> -->
+    </div>
+  </body>
+</html>

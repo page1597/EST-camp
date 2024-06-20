@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 전역 변수 */
+      :root {
+        --personal-color: teal;
+      }
+
+      /* 지역 변수 */
+      ul {
+        --second-color: royalblue;
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        background-color: var(--second-color);
+      }
+
+      div {
+        /* 적용되지 않음. --second-color는 ul과 자식요소들에만 적용된다. */
+        background-color: var(--second-color);
+
+        border: 5px solid var(--personal-color);
+      }
+      li {
+        float: left;
+        width: calc((100% - (24px * 2)) / 3);
+        /*
+        - 최소 텍스트 크기는 1rem.
+        - 이상적인 텍스트 크기는 `2.5vw` (뷰포트 너비의 2.5%).
+        - 최대 텍스트 크기는 2rem.
+        */
+        font-size: clamp(1rem, 2.5vw, 2rem);
+      }
+      li:not(:first-child) {
+        margin-left: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="">1</a></li>
+      <li><a href="">2</a></li>
+      <li><a href="">3</a></li>
+    </ul>
+    <div>hello world</div>
+  </body>
+</html>
