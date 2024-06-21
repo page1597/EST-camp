@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #one {
+        width: 100px;
+        background-color: red;
+        height: 100px;
+        /* 변화가 일어날 대상에 줌. 변화 "과정"을 보여주는 속성 */
+        transition: ease-out 1s;
+        /* 몇 단계로 애니메이션을 끊을 것인가 오 */
+        transition-timing-function: steps(3, start);
+        margin-bottom: 50px;
+      }
+      #one:hover {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        transform: translateX(200px);
+      }
+
+      /* */
+      .container {
+        display: flex;
+        gap: 20px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightcoral;
+        transition: transform 2s steps(var(--steps), start);
+      }
+
+      .box:hover {
+        transform: scale(1.5);
+      }
+
+      .box.steps-3 {
+        --steps: 3;
+      }
+
+      .box.steps-10 {
+        --steps: 10;
+      }
+
+      .box.steps-20 {
+        --steps: 20;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one"></div>
+    <div class="container">
+      <div class="box steps-3">3 Steps</div>
+      <div class="box steps-10">10 Steps</div>
+      <div class="box steps-20">20 Steps</div>
+    </div>
+  </body>
+</html>

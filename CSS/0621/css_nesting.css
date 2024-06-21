@@ -1,0 +1,19 @@
+.navbar {
+  background-color: #4267b2;
+  ul {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      color: white;
+    }
+  }
+}
+
+button {
+  background-color: blue;
+  color: white;
+  &:hover {
+    background-color: green;
+  }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: grid;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 12px;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        align-items: center;
+        justify-items: center;
+        max-width: 400px;
+      }
+      button {
+        font-size: 12px;
+        font-weight: 700;
+        padding: 9px 25px;
+        background-color: #343f50;
+        color: #cbd5df;
+        border: 1px solid #1a202c;
+        box-shadow: 2px 2px 0px 0px #ffffff1a inset;
+      }
+      .normal:enabled:hover {
+        color: #fff;
+        box-shadow: 2px 2px 0px 0px #ffffff33 inset;
+        text-decoration: underline;
+      }
+      .normal:enabled:active {
+        color: #fff;
+        box-shadow: 2px 2px 0px 0px #00000033 inset;
+      }
+      .normal:disabled {
+        color: #4a5568;
+      }
+      .positive {
+        color: #439aff;
+      }
+      .positive:enabled:hover,
+      .positive:enabled:active {
+        background-color: #439aff;
+        text-decoration: underline;
+
+        color: #fff;
+        border: 1px solid #439aff;
+      }
+      .positive:enabled:active {
+        box-shadow: 2px 2px 0px 0px #00000033 inset;
+      }
+      .negative {
+        color: #eb5757;
+      }
+      .negative:enabled:hover,
+      .negative:enabled:active {
+        background-color: #eb5757;
+        border: 1px solid #eb5757;
+        color: #fff;
+        text-decoration: underline;
+      }
+      .negative:enabled:active {
+        box-shadow: 2px 2px 0px 0px #00000033 inset;
+      }
+      button:disabled {
+        color: #4a5568;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div></div>
+      <div>default</div>
+      <div>hover</div>
+      <div>active</div>
+      <div>disabled</div>
+
+      <div>normal</div>
+      <button class="normal">Button</button>
+      <button class="normal">Button</button>
+      <button class="normal">Button</button>
+      <button class="normal" disabled>Button</button>
+
+      <div>positive</div>
+      <button class="positive">Yes</button>
+      <button class="positive">Yes</button>
+      <button class="positive">Yes</button>
+      <div></div>
+
+      <div>negative</div>
+      <button class="negative">Del</button>
+      <button class="negative">Del</button>
+      <button class="negative">Del</button>
+      <div></div>
+    </div>
+  </body>
+</html>
