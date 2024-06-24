@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .one {
+        perspective: 500px;
+        background-color: yellow;
+        display: flex;
+        justify-content: center;
+        perspective-origin: center bottom;
+      }
+      button {
+        width: 150px;
+        height: 100px;
+        background-color: teal;
+        border-radius: 10px;
+        transform: rotateY(50deg);
+      }
+      .container {
+        width: 300px;
+        padding: 100px;
+        border: 1px solid #ccc;
+      }
+
+      .box {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+      }
+      /* 완전히 동일한 조건에서의 모습을 보기 위해 세 요소 모두 별도의 동일한 원근감을 줍니다. */
+      .box1 {
+        transform: perspective(300px) scaleZ(1) rotateY(75deg);
+      }
+
+      .box2 {
+        transform: perspective(300px) scaleZ(2) rotateY(75deg);
+      }
+
+      .box3 {
+        transform: perspective(300px) scaleZ(4) rotateY(75deg);
+      }
+      article {
+        width: 100px;
+        height: 50px;
+        background-color: lime;
+        transform: rotateY(315deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="one">
+      <button>this is a button.</button>
+      <button>this is a button.</button>
+      <button style="transform-style: preserve-3d">
+        <article></article>
+      </button>
+      <button>this is a button.</button>
+      <button>this is a button.</button>
+      <button>this is a button.</button>
+    </div>
+
+    <div class="container">
+      <div class="box box1"></div>
+      <div class="box box2"></div>
+      <div class="box box3"></div>
+    </div>
+  </body>
+</html>
