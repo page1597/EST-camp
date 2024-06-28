@@ -1,0 +1,513 @@
+.shark {
+  position: relative;
+  width: 400px;
+  height: 150px;
+  margin-top: 100px;
+  animation: moveShark 5s linear infinite;
+  transition: transform 0.3s ease;
+}
+.shark:hover {
+  cursor: pointer;
+}
+
+.shark:active {
+  animation-play-state: paused;
+}
+/* .shark:active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  animation: bounceShark 5s linear infinite;
+  z-index: -100;
+} */
+
+.body-container {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+}
+.body {
+  clip-path: polygon(
+    23.4% 0%,
+    31.67% 0%,
+    54% 0%,
+    71.24% 8.24%,
+    91.77% 21.14%,
+    100% 28.3%,
+    100% 54%,
+    86.34% 70.44%,
+    57.54% 93.15%,
+    40.9% 99.9%,
+    27.51% 99.9%,
+    16% 76.8%,
+    6.97% 53.7%,
+    0% 28.3%,
+    0% 11.14%,
+    11.81% 7.4%
+  );
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-color: #75738f;
+}
+.body-border {
+  clip-path: polygon(
+    23.4% 0%,
+    31.67% 0%,
+    54% 0%,
+    71.24% 8.24%,
+    91.77% 21.14%,
+    100% 28.3%,
+    100% 54%,
+    86.34% 70.44%,
+    57.54% 93.15%,
+    40.9% 99.9%,
+    27.51% 99.9%,
+    16% 76.8%,
+    6.97% 53.7%,
+    0% 28.3%,
+    0% 11.14%,
+    11.81% 7.4%
+  );
+  position: absolute;
+  left: -8px;
+  top: -5px;
+  width: calc(300px * 1.07);
+  height: calc(100px * 1.12);
+  background-color: black;
+  z-index: -1;
+}
+.body-shadow {
+  z-index: inherit;
+  background-color: #5f5d78;
+  clip-path: polygon(
+    23.4% 0%,
+    31.67% 0%,
+    54% 0%,
+    71.24% 8.24%,
+    91.77% 21.14%,
+    100% 28.3%,
+    100% 46%,
+    88.64% 34.64%,
+    63.48% 18.06%,
+    37.79% 12.53%,
+    25.06% 13.2%,
+    11.81% 18.2%,
+    0% 17.76%,
+    0% 11.14%,
+    11.81% 7.4%
+  );
+  position: absolute;
+  width: 300px;
+  height: 100px;
+}
+.body-light1 {
+  position: absolute;
+  width: 8px;
+  height: 17px;
+  background-color: white;
+  z-index: 1;
+  border-radius: 30%;
+  top: 12px;
+  left: -0.5px;
+  clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+}
+.body-light2 {
+  z-index: 3;
+  clip-path: polygon(
+    23.4% 0%,
+    31.67% 0%,
+    49.02% 0%,
+    49.02% 3.66%,
+    35.73% 3.21%,
+    24.12% 2.81%,
+    11.81% 7.4%
+  );
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  background-color: white;
+}
+.body-light3 {
+  z-index: 3;
+  clip-path: polygon(80.61% 66.53%, 86.34% 62.34%, 100% 54%, 86.34% 70.72%);
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  background-color: white;
+}
+.fin {
+  position: absolute;
+  top: -50px;
+  left: 140px;
+  width: 80px;
+  height: 60px;
+  background-color: #75738f;
+  clip-path: polygon(
+    31.21% 34.06%,
+    62.27% 0%,
+    68.3% 34.06%,
+    79.75% 64.34%,
+    100% 100%,
+    2.5% 100%,
+    14.44% 64.34%
+  );
+}
+.fin-light {
+  z-index: 1;
+  position: absolute;
+  top: -50.7px;
+  left: 140px;
+  width: 80px;
+  height: 60px;
+  background-color: white;
+  clip-path: polygon(
+    31.21% 34.06%,
+    62.27% 0%,
+    43.95% 25.64%,
+    28.42% 54.38%,
+    17.6% 79.99%,
+    14.44% 90.64%,
+    5.85% 90.64%,
+    14.44% 64.34%
+  );
+}
+.fin-shadow {
+  position: absolute;
+  top: -50px;
+  left: 140px;
+  width: 80px;
+  height: 60px;
+  background-color: #5f5d78;
+  clip-path: polygon(
+    56.24% 34.06%,
+    62.27% 0%,
+    68.3% 34.06%,
+    79.75% 64.34%,
+    100% 100%,
+    70.96% 100%,
+    63.73% 67.6%
+  );
+}
+.fin-border {
+  z-index: -1;
+  position: absolute;
+  top: -60px;
+  left: 133px;
+  width: calc(80px * 1.2);
+  height: calc(60px * 1.2);
+  background-color: black;
+  clip-path: polygon(
+    31.21% 34.06%,
+    62.27% 0%,
+    68.3% 34.06%,
+    79.75% 64.34%,
+    100% 100%,
+    2.5% 100%,
+    14.44% 64.34%
+  );
+}
+
+.tail-container {
+  position: absolute;
+  right: 63px;
+  top: -25px;
+
+  height: 130px;
+  width: 40px;
+
+  animation: shakeTail 2s linear 0s infinite;
+  z-index: -1;
+}
+
+.tail {
+  position: absolute;
+  width: 40px;
+  height: 130px;
+
+  background-color: #5f5d78;
+  clip-path: polygon(
+    27.65% 18.37%,
+    69.67% 1.7%,
+    100% 0%,
+    74.53% 29.04%,
+    93.57% 50%,
+    70.17% 66.62%,
+    78.02% 82.06%,
+    96.2% 96.15%,
+    34.64% 82.06%,
+    0% 58.56%,
+    0% 39.01%
+  );
+  border-radius: 24px;
+}
+.tail-light {
+  z-index: 1;
+  position: absolute;
+  width: 40px;
+  height: 130px;
+
+  background-color: white;
+  clip-path: polygon(
+    27.65% 18.37%,
+    69.67% 1.7%,
+    100% 0%,
+    74.53% 29.04%,
+    87.15% 47.99%,
+    69.67% 29.69%,
+    85.42% 2.7%,
+    38.54% 18.37%,
+    0% 39.01%
+  );
+}
+.tail-light2 {
+  z-index: 1;
+  position: absolute;
+  width: 40px;
+  height: 130px;
+
+  background-color: white;
+  clip-path: polygon(
+    78.02% 89.05%,
+    70.48% 66.4%,
+    80.82% 56.94%,
+    93.57% 50%,
+    70.17% 66.62%,
+    78.02% 82.06%,
+    96.2% 96.15%,
+    34.64% 82.06%,
+    0% 58.56%,
+    47.39% 82.8%
+  );
+}
+.tail-border {
+  position: absolute;
+  width: calc(40px * 1.4);
+  height: calc(130px * 1.23);
+  top: -14px;
+  left: -6px;
+  background-color: black;
+  clip-path: polygon(
+    27.65% 18.37%,
+    69.67% 1.7%,
+    100% 0%,
+    74.53% 29.04%,
+    93.57% 50%,
+    70.17% 66.62%,
+    78.02% 82.06%,
+    96.2% 96.15%,
+    34.64% 82.06%,
+    0% 58.56%,
+    0% 39.01%
+  );
+  border-radius: 24px;
+  z-index: -1;
+}
+
+.belly {
+  clip-path: polygon(
+    44.99% 42.39%,
+    57.54% 53.7%,
+    65.74% 62.88%,
+    73.78% 80.37%,
+    57.54% 93.15%,
+    40.9% 99.9%,
+    27.51% 99.9%,
+    16% 76.8%,
+    6.97% 53.7%,
+    0% 28.3%,
+    0% 26.77%,
+    15.68% 30.54%,
+    32.12% 36.15%
+  );
+
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  background-color: #dbdbdb;
+}
+.belly-light {
+  z-index: 0;
+  background-color: white;
+  clip-path: polygon(
+    30.01% 97.01%,
+    33.18% 100%,
+    27.51% 99.9%,
+    16% 76.8%,
+    6.97% 53.7%,
+    0% 28.3%,
+    1.57% 24.42%,
+    9.22% 52.31%,
+    23.61% 84.98%
+  );
+
+  position: absolute;
+  width: 300px;
+  height: 100px;
+}
+.fin2 {
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  width: 90px;
+  height: 60px;
+  background-color: #75738f;
+  clip-path: polygon(
+    0% 31%,
+    0% 0%,
+    28.08% 0%,
+    49.99% 13.55%,
+    60.97% 24.86%,
+    70.85% 43.87%,
+    100% 86.25%,
+    100% 100%,
+    90.88% 98.68%,
+    60.97% 76.41%
+  );
+}
+.fin2-belly {
+  z-index: 2;
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  width: 90px;
+  height: 60px;
+  background-color: #dbdbdb;
+  clip-path: polygon(
+    0% 31%,
+    0% 21%,
+    23.97% 39.94%,
+    62.22% 66.99%,
+    81.11% 83.5%,
+    100% 93.71%,
+    100% 100%,
+    90.88% 98.68%,
+    60.97% 76.41%
+  );
+}
+.fin2-border {
+  z-index: -1;
+  position: absolute;
+  top: 10px;
+  right: 95px;
+  width: 170px;
+  height: 116px;
+  background-color: black;
+  clip-path: polygon(
+    0% 31%,
+    0% 0%,
+    28.08% 0%,
+    49.99% 13.55%,
+    60.97% 24.86%,
+    70.85% 43.87%,
+    100% 86.25%,
+    100% 100%,
+    90.88% 98.68%,
+    60.97% 76.41%
+  );
+}
+
+.fin3 {
+  z-index: 1;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #5f5d78;
+  clip-path: polygon(
+    100% 0%,
+    65.08% 16.86%,
+    38.3% 35.2%,
+    12% 67.3%,
+    0% 100%,
+    100% 100%,
+    84.23% 72.63%,
+    84.23% 41.05%
+  );
+  left: 250px;
+  transform: rotate(15deg);
+}
+
+.fin3-border {
+  z-index: -1;
+  position: absolute;
+  width: 31px;
+  height: 28px;
+  background-color: black;
+  clip-path: polygon(
+    100% 0%,
+    65.08% 16.86%,
+    38.3% 35.2%,
+    12% 67.3%,
+    0% 100%,
+    100% 100%,
+    84.23% 72.63%,
+    84.23% 41.05%
+  );
+  left: 248px;
+  top: -8px;
+  transform: rotate(25deg);
+}
+.eye {
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background-color: black;
+  border-radius: 50%;
+  left: 60px;
+  top: 20px;
+  z-index: 1;
+  /*      animation: blink 2s linear infinite;*/
+}
+.nose {
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  background-color: black;
+  border-radius: 50%;
+  left: 25px;
+  top: 43px;
+  transform: rotate(-35deg);
+  z-index: 1;
+}
+.mouth {
+  z-index: 3;
+  position: absolute;
+  background-color: black;
+  width: 45px;
+  height: 5px;
+  top: 68px;
+  left: 40px;
+  clip-path: polygon(100% 0%, 100% 60%, 0% 100%, 0% 10%, 31.43% 20%, 75% 6.7%);
+}
+
+.gill {
+  width: 10px;
+  height: 70px;
+  background-color: black;
+  clip-path: polygon(
+    100% 19.33%,
+    100% 22.83%,
+    56.7% 29.67%,
+    82.93% 42.32%,
+    90.59% 54.73%,
+    65.86% 61.81%,
+    25% 84.17%,
+    0% 80.67%,
+    50% 49.33%,
+    25% 29.67%,
+    25% 29.67%
+  );
+  transform: rotate(10deg);
+}
+.gill-container {
+  display: flex;
+  position: absolute;
+  gap: 5px;
+  left: 120px;
+  top: 5px;
+}
