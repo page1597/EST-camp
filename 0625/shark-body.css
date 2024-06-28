@@ -2,7 +2,7 @@
   position: relative;
   width: 400px;
   height: 150px;
-  margin-top: 100px;
+  margin-top: 10%;
   animation: moveShark 5s linear infinite;
   transition: transform 0.3s ease;
 }
@@ -510,4 +510,14 @@
   gap: 5px;
   left: 120px;
   top: 5px;
+}
+.teeth {
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  background-color: white;
+  width: 12px;
+  height: 8px;
+  position: absolute;
+  z-index: 999;
+  left: 66px;
+  top: 72px;
 }

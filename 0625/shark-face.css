@@ -1,18 +1,20 @@
 .face-container {
-  position: relative;
+  position: absolute;
   width: 250px;
   height: 180px;
-  margin: 50px;
   transition: transform 0.3s ease;
   animation: bounceShark 5s linear infinite forwards;
   z-index: 0;
+  margin-top: 10%;
+  left: calc(50% - 125px);
+  transform: translate(-50%, -50%);
 }
 
 /* not working */
-.face:hover {
+/* .face:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
+} */
 
 .face {
   position: absolute;
@@ -118,4 +120,24 @@
   bottom: 30px;
   margin-left: 14px;
   background-color: black;
+}
+.face-teeth1 {
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  background-color: white;
+  width: 12px;
+  height: 8px;
+  position: absolute;
+  z-index: 999;
+  left: 77px;
+  bottom: 44px;
+}
+.face-teeth2 {
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  background-color: white;
+  width: 12px;
+  height: 8px;
+  position: absolute;
+  z-index: 999;
+  right: 77px;
+  bottom: 44px;
 }
