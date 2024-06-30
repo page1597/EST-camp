@@ -52,6 +52,34 @@
   }
 }
 
+@keyframes scaleShadow {
+  0%,
+  100% {
+    transform: scale(100%);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: scale(94%);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: scale(106%);
+  }
+
+  80% {
+    transform: scale(104.4%);
+  }
+
+  90% {
+    transform: scale(95.6%);
+  }
+}
+
 @keyframes shakeTail {
   0% {
     transform: rotate(0deg);
@@ -128,12 +156,11 @@
   }
 }
 @keyframes blink {
-    0%,
-    50%,
-    100% {
-    }
-    25% {
-      height: 0px;
-    }
+  0%,
+  50%,
+  100% {
   }
-  
+  25% {
+    height: 0px;
+  }
+}

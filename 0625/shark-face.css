@@ -1,20 +1,15 @@
+.face-with-shadow {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 180px;
+}
 .face-container {
-  position: absolute;
   width: 250px;
   height: 180px;
   transition: transform 0.3s ease;
   animation: bounceShark 5s linear infinite forwards;
-  z-index: 0;
-  margin-top: 10%;
-  left: calc(50% - 125px);
-  transform: translate(-50%, -50%);
 }
-
-/* not working */
-/* .face:hover {
-  cursor: pointer;
-  transform: scale(1.2);
-} */
 
 .face {
   position: absolute;
@@ -23,7 +18,7 @@
   background-color: #75738f;
   border-radius: 100%;
   border-top: 4px solid white;
-  box-shadow: 0 0 0 7px;
+  box-shadow: 0 0 0 6.5px;
 }
 .face-belly {
   position: absolute;
@@ -140,4 +135,13 @@
   z-index: 999;
   right: 77px;
   bottom: 44px;
+}
+.face-shadow {
+  width: 200px;
+  height: 30px;
+  background-color: rgba(5, 10, 14, 0.34);
+  border-radius: 50%;
+  margin-top: 100px;
+  animation: scaleShadow 5s linear infinite forwards;
+  filter: blur(1.5px);
 }
