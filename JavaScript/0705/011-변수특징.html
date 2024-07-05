@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      // 변수 키워드 별 특징
+      // var, let, const
+      a = 10; // 키워드 없이 선언, 할당이 가능
+      // var a = 10;
+      console.log(a);
+
+      // 재선언
+      var name = "이름";
+      console.log(name);
+      //
+      var name = "위니브";
+      console.log(name);
+
+      let name1 = "이름1";
+      // let name1 = "이름2";
+      // var만 재선언 가능
+      // let, const는 재선언 불가능
+
+      // 재할당
+      var x = 10;
+      x = 20;
+
+      let y = 30;
+      y = 40;
+
+      const z = 10;
+      z = 20; // TypeError: Assignment to constant variable.
+
+      // * var의 사용을 지양해야 된다.
+      // 값 변경해야 된다 -> let, 고정값 -> const
+      // 최대한 const 사용, 값 바뀌어야 할 경우에만 let 사용
+      // 1. 의도하지 않은 값 변경 방지
+      // 2. 가독성 향상 (다른 개발자들이 변수 값이 변경될 가능성이 없다는 것을 빠르게 인지 가능,
+      // 선언 동시에 초기화를 해야 되기 때문에 어떤 데이터가 사용되는지 확인이 용이)
+    </script>
+  </body>
+</html>
