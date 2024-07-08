@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 문자열
+      // 작은 따옴표, 큰 따옴표, 백틱으로 감싸진 텍스트
+      // let str1 = 'hello world';
+      // let str2 = "hello world";
+      let str3 = `hello
+
+      world`; // 백틱은 줄바꿈 표현 가능
+
+      // console.log(typeof str1);
+      // console.log(typeof str2);
+      // console.log(typeof str3);
+
+      let str4 = "I'm hati";
+      // let str5 = "hello\"\nworld";
+      let str6 = `hello \
+
+
+      world`;
+
+      // 템플릿 리터럴: 백틱을 이용해 문자열을 나타내는 표기법
+      const a = 10;
+      const b = 20;
+      // 10 + 20 = 30
+      console.log(`${a} + ${b} = ${a + b}`);
+      console.log(`제 이름은 ${`김땡떙`}입니다.`);
+      console.log(`제 나이는 ${20}입니다.`);
+
+      // ------------ 문자열의 특징 ------------
+      let greeting = "Hello world";
+      console.log(greeting[0]); // 'H'
+      console.log(greeting[5]); // ' '
+      console.log(greeting[12]); // undefined
+      console.log(greeting[-1]); // undefined
+      console.log(greeting.at(-1)); // 음수 인덱스로 접근 가능
+
+      console.log("문자열의 길이: ", greeting.length);
+      console.log(greeting[greeting.length - 1]);
+
+      greeting[5] = "k"; // 코드를 실행하지 않음.
+      console.log(greeting); // 문자열의 불변성을 지키기 위해
+
+      let greeting2 = "안녕하세요";
+      let company = "위니브";
+      console.log(greeting2 + company); // "안녕하세요위니브"
+      console.log("안녕하세요위니브" === greeting2 + company);
+      console.log("a+b=" + a + b); // "a+b=1020"
+      console.log("a+b=" + (a + b)); // "a+b=30"
+    </script>
+  </body>
+</html>
