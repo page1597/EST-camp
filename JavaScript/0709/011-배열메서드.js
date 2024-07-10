@@ -167,3 +167,9 @@ copyArr[2][0] = 20; // 이때는 copyArr 수정하면 원본 배열이 바뀜. �
 // 실제로 객체는 가리키는 주소값이 같게 되는것임. -> 원본 배열도 변경됨
 console.log("copy: ", copyArr);
 console.log("origin: ", arr10);
+
+console.log("--- for of ---"); // 순회
+const arr11 = [10, 20, 30, 40];
+for (const iterator of arr11) {
+  console.log(iterator);
+}
