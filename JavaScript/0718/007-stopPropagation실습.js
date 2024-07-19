@@ -3,14 +3,34 @@
 
 const p = document.querySelectorAll("p");
 
+// p.forEach((el) => {
+//   el.addEventListener("click", function (e) {
+//     const value = e.target;
+//     if (value.nodeName === "BUTTON") {
+//       if (window.confirm("해당 태그 삭제?")) {
+//         value.parentNode.remove();
+//       }
+//     } else {
+//       window.alert(this.childNodes[0].textContent);
+//     }
+//   });
+// });
+
 p.forEach((el) => {
   el.addEventListener("click", function (e) {
+    // window.alert(el.textContent);
+    window.alert(this.childNodes[0].textContent);
+  });
+});
+
+const delBtn = document.querySelectorAll("button");
+
+delBtn.forEach((el) => {
+  el.addEventListener("click", function (e) {
+    // 이벤트 전파 방지
     e.stopPropagation();
-    e.preventDefault();
-    this.childNodes.forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        alert(node.textContent);
-      }
-    });
+    if (confirm("정말 삭제하시겠습니까?")) {
+      el.parentElement.remove();
+    }
   });
 });
