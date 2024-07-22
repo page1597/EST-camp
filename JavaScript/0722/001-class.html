@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Robot {
+        // 생성자 함수 (객체 생성)
+        // 생성자 함수는 new 키워드가 호출될 때 자동으로 실행됨
+        constructor(name) {
+          this.name = name;
+        }
+        // 메소드 정의
+        sayYourName() {
+          console.log(`삐리비리. 제 이름은 ${this.name}입니다.`);
+        }
+      }
+      const robot = new Robot("엄마로봇");
+      console.log(robot);
+
+      // 상속
+      class BabyRobot extends Robot {
+        constructor(name, age) {
+          // super를 맨 위에 넣어야 한다.
+          super(name); // 부모의 constructor
+          this.age = age;
+        }
+        sayYourName() {
+          console.log(`아기로봇 ${this.name}입니다.`);
+        }
+        walk() {
+          console.log("걷기");
+        }
+      }
+      const babyRobot = new BabyRobot("애기로봇", 1);
+      console.log(babyRobot);
+      babyRobot.sayYourName();
+      babyRobot.walk();
+    </script>
+  </body>
+</html>

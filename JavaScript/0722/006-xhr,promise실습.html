@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.
+      /* let result;
+           function xhrRequest() {
+             const requestObj = new XMLHttpRequest();
+             requestObj.open("GET", "hello.txt");
+             requestObj.onreadystatechange = () => {
+               if (requestObj.readyState === 4 && requestObj.status === 200) {
+                 result = requestObj.responseText;
+                 document.write(result);
+               }
+             };
+             requestObj.send();
+           }
+      */
+      // 2. Promise
+      const sayHi = new Promise((resolve, reject) => {
+        const requestObj = new XMLHttpRequest();
+        requestObj.open("GET", "hello.txt");
+        requestObj.onreadystatechange = () => {
+          if (requestObj.readyState === 4) {
+            if (requestObj.status === 200) {
+              const result = requestObj.responseText;
+              resolve(result);
+            } else {
+              reject(new Error(result.Promise));
+            }
+          }
+        };
+        requestObj.send();
+      });
+      sayHi
+        .then((asyncResult) => {
+          document.write(asyncResult);
+          console.log("성공");
+        })
+        .catch((e) => {
+          console.log(`실패: ${e}`);
+        });
+    </script>
+  </body>
+</html>

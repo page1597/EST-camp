@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const orderCoffee = new Promise((resolve, reject) => {
+        const requestObj = new XMLHttpRequest();
+        requestObj.open("GET", "orderCoffee.txt");
+        requestObj.onreadystatechange = () => {
+          if (requestObj.readyState === 4) {
+            if (requestObj.status === 200) {
+              const result = requestObj.responseText;
+              // resolve 메소드가 실행되면 then 메소드가 자동으로 호출
+              resolve(result);
+            } else {
+              // resolve 메소드 호출이 없는 상태에서 reject 메소드가 실행되면
+              // catch 메소드가 자동으로 호출
+              reject(new Error(`커피 주문 실패: ${result.Error}`));
+            }
+          }
+        };
+        // 서버로 요청을 보냄
+        requestObj.send();
+      });
+      /* class Promise {
+        constructor(callback) {
+          this.resolve = () => {};
+          this.reject = () => {};
+          callback(this.resolve, this.reject);
+        }
+      } */
+
+      // then 메소드를 사용하면 비동기 코드를 마치 동기적인 코드처럼 작성 가능
+      orderCoffee
+        // resolve 메소드가 실행될때 전달된 인자는 then 메소드의 콜백함수의 인자로 전달됩니다.
+        .then((asyncResult) => {
+          console.log(asyncResult);
+          console.log("약속이 이루어졌습니다.");
+          return asyncResult;
+        })
+        //// resolve 메소드와 마찬가지로 reject 메소드가 실행될때 전달된 인자는 catch 메소드의 콜백함수의 인자로 전달됩니다.
+        .catch((error) => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

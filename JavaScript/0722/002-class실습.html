@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Sausage {
+        constructor(ingredient1, ingredient2) {
+          this.ingredient1 = ingredient1;
+          this.ingredient2 = ingredient2;
+        }
+        taste() {
+          console.log(`${this.ingredient1}와 ${this.ingredient2} 맛이 난다!`);
+        }
+      }
+      const sausage = new Sausage("파", "소고기");
+      sausage.taste();
+
+      class FireSausage extends Sausage {
+        taste() {
+          console.log(
+            `${this.ingredient1}, ${this.ingredient2}, 그리고 불 맛이 난다!`
+          );
+        }
+      }
+      const fireSausage = new FireSausage("파", "소고기");
+      fireSausage.taste();
+    </script>
+  </body>
+</html>
