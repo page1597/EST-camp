@@ -4,9 +4,14 @@ const $ul = document.querySelector("ul");
 const $form = document.querySelector("form");
 // 새로고침 되는 이유 -> live server 때문
 const fetchTodos = async function () {
-  const response = await fetch("http://localhost:3000/todos");
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch("http://localhost:3000/todos");
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 };
 
 const loadTodos = async function () {
@@ -28,18 +33,22 @@ const addTodo = async function () {
     todo: inputValue,
     done: false,
   };
-  const data = await fetch("http://localhost:3000/todos", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(newTodo),
-  });
-  const newPost = await data.json();
-  const $li = document.createElement("li");
-  $li.textContent = newPost.todo;
-  $ul.appendChild($li);
-  $input.value = "";
+  try {
+    const data = await fetch("http://localhost:3000/todos", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newTodo),
+    });
+    const newPost = await data.json();
+    const $li = document.createElement("li");
+    $li.textContent = newPost.todo;
+    $ul.appendChild($li);
+    $input.value = "";
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 // $button.addEventListener("click", () => {
