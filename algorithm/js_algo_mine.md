@@ -92,9 +92,7 @@ const zip = (a, b) => a.map((e, i) => [e, b[i]]);
 const range = (start, end) => Array.from({length: end - start + 1}, (_, i) => start + i);
 
 Array.from('hello'); // ['h', 'e', 'l', 'l', 'o']
-Array.from({'one':10, 'two':20}, (v, i) => i);
-Array.from({'one':10, 'two':20}, (v, i) => 'hello');
-Array.from({'one':10, 'two':20, length: 3}, (v, i) => 'hello');
+Array.from({'one':10, 'two':20}, (v, i) => i); // [0, 1, 2, 3, 4]
 Array.from({1, 2, 3});
 Array.from([1, 2, 3]);
 Array.from(new Set([1, 2, 3]));
@@ -187,7 +185,6 @@ Math.floor(10 / 3);
 
 ## 1.5 워밍업 문제 1
 
-- 문제이름: 8의 갯수 카운팅하기
 - 링크: https://codingdojang.com/scode/393
 
 ```js
@@ -252,7 +249,6 @@ Array(100)
 
 ## 1.6 워밍업 문제 2
 
-- 문제이름: 최단거리 구하기
 - 링크: https://codingdojang.com/scode/408
 - 순서쌍, 최댓값, 최솟값, 특정값의 정렬 문제는 모두 정렬문제입니다.
 
@@ -307,7 +303,6 @@ console.log(result);
 
 ## 1.7 워밍업 문제 3
 
-- 문제이름: 쿠키
 - 링크: https://100.jsalgo.co.kr/?page=4#
 
 ```js
@@ -363,194 +358,104 @@ solution(cookies);
 ## 1.8 워밍업 문제 4
 
 - 문제이름: 평균점수 카운팅
-- 링크: https://100.jsalgo.co.kr/?page=11#
+- 링크: https://100.jsalgo.co.kr/?page=11
 
 ```js
-function solution(data){
-    let result = 0; // 80점 이상인 학생 수
-    data.forEach(v => {
-        let mean = 0; // 각 학생의 평균
-        v.forEach(i => {
-            mean += i;
-        });
-        mean /= v.length;
-        if (mean >= 80) {
-            result++;
-        }
-    });
-    return result;
+function solution(data) {
+  let mean = 0; // 각 학생의 평균
+  let result = 0; // 80점 이상인 학생 수
+  data.forEach((v) => {
+    mean = v.reduce((acc, cur) => acc + cur) / v.length;
+    if (mean >= 80) {
+      result++;
+    }
+  });
+  return result;
 }
 
-solution([[92, 85, 97], [30, 21, 60], [90, 99, 98], [0, 0, 0], [81, 80, 88]])
+solution([
+  [92, 85, 97],
+  [30, 21, 60],
+  [90, 99, 98],
+  [0, 0, 0],
+  [81, 80, 88],
+]);
 
 ////////////////
+[92, 85, 97].reduce((a, c) => a + c); // 외워놓기. 전체 합 구하는
+[10, 20, 30].reduce((a, c) => a + c, 0);
+[].reduce((a, c) => a + c); // 에러 발생함
+[].reduce((a, c) => a + c, 0); // 이렇게 해야 에러 발생 안함
+////////////////
 
-function solution(data){
-    let mean = 0; // 각 학생의 평균
-    let result = 0; // 80점 이상인 학생 수
-    data.forEach(v => {
-        mean = v.reduce((acc, cur) => acc + cur) / v.length;
-        if (mean >= 80) {
-            result++;
-        }
-    });
-    return result;
+filter, reduce, length 사용해서 문제 풀기
+
+
+function solution2(data) {
+  const averages = data.map((v) => {
+    const sum = v.reduce((a, c) => a + c, 0);
+    return sum / v.length;
+  });
+  const filteredArr = averages.filter((el) => el >= 80);
+  return filteredArr.length;
 }
+const solution2 = data => data.map(v => v.reduce((a, c) => a + c, 0) / v.length).filter(el => el >= 80).length;
 
-solution([[92, 85, 97], [30, 21, 60], [90, 99, 98], [0, 0, 0], [81, 80, 88]])
-
-////////////////
-
-[10, 20, 30].reduce((a, c) => {
-    console.log(`a: ${a}`);
-    console.log(`c: ${c}`);
-    return a + c;
-}, 0)
-
-////////////////
-
-[10, 20, 30, 40, 50].reduce((a, c) => a + c)
-[92, 85, 97].reduce((a, c) => a + c)
-[].reduce((a, c) => a + c)
-
-[10, 20, 30].reduce((a, c) => a + c, 0)
-
-////////////////
-
-[10, 20, 30, 40, 50].filter(v => v >= 30)
-
-function 함수(값){
-    return 값 >= 30;
-}
-
-[10, 20, 30, 40, 50].filter(함수)
-
-////////////////
-
-// filter, reduce, length를 사용해서 문제를 풀어보세요!
-// 답은 라운지에 올려주시면 됩니다!
-// 10분 드리도록 하겠습니다!
-
-// 메서드로 푸는 것을 왜 강조할까요?
-// 검증된 메서드, 가독성, 코드의 효율성, 코드의 안정성
-// 다른 언어로 개발할 때도 메서드가 거의 동일하게 사용됩니다.
-
-// function solution(data){
-//     return data.filter(데이터 => 데이터 > 80)
-// }
-
-function solution(data){
-    return data.filter(v => v.reduce((a, c) => a + c, 0) >= 240).length;
-}
-
-
-solution([[92, 85, 97], [30, 21, 60], [90, 99, 98], [0, 0, 0], [81, 80, 88]])
 ```
 
 ## 1.9 워밍업 문제 5
 
-- 문제이름: 비트 치환 문제
+- 문제 이름: 비트 치환 문제
 - 링크: https://100.jsalgo.co.kr/?page=30#
 
 ```js
-//  9.toString()
-//  (9).toString()
-
-// let a = 9;
-// a.toString();
-
-let a = 9;
-a.toString(2);
-
-////////////////
-
 // 이런 풀이를 권하지 않습니다.
-function solution(data) {
-  let result = "";
+function solution(5) {
+  let result = '';
   for (let s of data.toString(2)) {
     console.log(s);
-    if (s === "1") {
-      result += "A";
+    if (s === '1') {
+      result += 'A';
     } else {
-      result += "B";
+      result += 'B';
     }
   }
   return result;
 }
-
 solution(9);
 
-////////////////
-
-(9)
-  .toString(2)(9)
-  .toString(2)
-  .replace(
-    /1/g,
-    "A"
-  )(9)
-  .toString(2)
-  .replace(/1/g, "A")
-  .replace(/0/g, "B");
-
-function solution(data) {
-  return data.toString(2).replace(/1/g, "A").replace(/0/g, "B");
-}
-
-solution(9);
+///////////// 메서드 체이닝을 통한 깔끔한 풀이
+(9).toString(2).replace(/1/g, 'A').replace(/0/g, 'B');
 ```
 
 ## 1.10 워밍업 문제 6
 
-- 문제이름: 중복된 숫자 갯수
+- 문제 이름: 중복된 숫자 개수
 - 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120583
 
 ```js
 function solution(array, n) {
   let answer = 0;
-  for (let i of array) {
-    if (i === n) {
-      answer++;
-    }
-  }
+  answer = array.filter((v) => v === n).length;
   return answer;
-}
-
-solution([1, 2, 3, 4, 5, 1, 2, 3, 4, 5], 3);
-
-////////////////
-
-function solution(array, n) {
-  let answer = 0;
-  for (let i of array) if (i === n) answer++;
-  return answer;
-}
-
-////////////////
-
-function solution(array, n) {
-  return array.filter((v) => v === n).length;
 }
 ```
 
-## 1.11 워밍업 문제 7
+## 1. 11 워밍업 문제 7
 
-- 문제이름: 머쓱이보다 키 큰 사람
-- 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120585
+- 문제 이름: 머쓱이보다 키 큰 사람
+- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120585
 
-````js
-// 풀이시간: 10분
-// 답은 라운지에 가려서(||```js <코드> ```||) 올려주세요.
-// 바로 위에 있는 코드 참고하시면 됩니다.
-
+```js
 function solution(array, height) {
-  return array.filter((v) => v > height).length;
+  let answer = 0;
+  answer = array.filter((v) => v > height).length;
+  return answer;
 }
 
-solution([175, 180, 165, 170, 185], 175);
-
-////////////////
-
+// 기본 숫자 정렬 (오름차순)
+array.sort((a, b) => a - b);
+//////////////////
 function solution(array, height) {
   array.sort((a, b) => b - a);
   let index = array.findIndex((h) => h <= height);
@@ -558,86 +463,31 @@ function solution(array, height) {
   if (index === -1) return array.length;
   return index;
 }
-
-solution([175, 180, 165, 170, 185], 175);
-
-////////////////
-
-[175, 180, 165, 170, 185]
-  .map((v) => v > 175)
-  [(175, 180, 165, 170, 185)].map((v) => (v > 175 ? true : false))
-  [(175, 180, 165, 170, 185)].map((v) => (v > 175 ? 1 : 0));
-
+///////////////////
 function solution(array, height) {
   let arr = array.map((v) => v > height);
+  // [false, true, false, false, true]
+
   return arr.reduce((a, c) => a + c, 0);
 }
 
-solution([175, 180, 165, 170, 185], 175);
-````
+[175, 180, 165, 170, 185].map((v) => (v > 175 ? true : false));
+[175, 180, 165, 170, 185].map((v) => (v > 175 ? 1 : 0));
+```
 
 ## 1.12 워밍업 문제 8
 
-- 문제이름: 자릿수 더하기
+- 문제 이름: 자릿수 더하기
 - 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120906
 
 ```js
-(123)
-  .toString()
-  .split("")(123)
-  .toString()
-  .split("")
-  .map((v) => parseInt(v))(123)
-  .toString()
-  .split("")
-  .map((v) => parseInt(v))
-  .reduce(
-    (a, c) => a + c,
-    0
-  )(123)
-  .toString()
-  .split("")
-  .reduce((a, c) => a + c)(123)
-  .toString()
-  .split("")
-  .reduce(
-    (a, c) => a + c,
-    0
-  )(123)
-  .toString()
-  .split("")
-  .reduce(
-    (a, c) => a + parseInt(c),
-    0
-  )(123)
-  .toString()
-  .split("")
-  .reduce(
-    (a, c) => a + parseInt(c) * 2,
-    0
-  )
-  (
-    // 비교
-    123
-  )
-  .toString()
-  .split("")
-  .map((v) => parseInt(v))
-  .reduce(
-    (a, c) => a + c,
-    0
-  )(123)
-  .toString()
-  .split("")
-  .reduce((a, c) => a + parseInt(c), 0);
-
+// 각 자리 숫자의 합
 function solution(n) {
   return n
     .toString()
     .split("")
     .reduce((a, c) => a + parseInt(c), 0);
 }
-
 solution(123);
 ```
 
@@ -656,24 +506,15 @@ solution(123);
 5. 페이지 교체 알고리즘
 6. 슬라이딩 윈도우와 투 포인터 알고리즘
 
-- (학문적 접근이 아니라면 잠시 이해를 미뤄두세요.) ADT(Abstract Data Type): 스택이라는 자료형을 구현한다고 했을 때, 구현해야할 메서드 명, 멤버 변수 등을 정의한 것을 말합니다. [위키디피아](https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%83%9D)에 정의되어 있는 stack을 한 번 확인해보세요.
+- ADT(Abstract Data Type)
+- class로 구현하기 스택과 큐
 
 ## 2.1 스택과 큐
 
 ### 2.1.1 스택과 큐의 개념
 
-    * 스택: LIFO(Last In First Out), 가장 최근에 들어온 데이터가 가장 먼저 나가는 구조
-    * 큐: FIFO(First In First Out), 가장 먼저 들어온 데이터가 가장 먼저 나가는 구조
-    * 스택과 큐 간단한 문제
-        * 다음중 스택이 될 수 없는 것은? 스택에 들어가는 값은 1, 2, 3, 4, 5이다. (4번)
-            * 1. 1, 2, 3, 4, 5
-            * 2. 3, 2, 4, 5, 1
-            * 3. 4, 3, 2, 5, 1
-            * 4. 1, 5, 4, 2, 3
-    * 이게 왜 중요하죠? 왜 이렇게나 많은 시험에서 나오고 있을까요?
-        * 예를 들어서 컴퓨터에서 프로그램을 호출하면 스택에 쌓이게 됩니다. 만약에 문서 작업을 하다가, 게임을 하다가, 인터넷 서핑을 하다가, 넷플릭스를 보았습니다. 그러면 넷플릭스를 종료시켰을 때 무엇이 나와야 할까요? `Alt + Tab`을 사용했을 때에도 마찬가지입니다. 최근에 사용한 것이 나오죠. 이런 것들이 모두 스택과 큐라는 개념을 사용합니다.
-    * JavaScript에서는 이게 왜 또 중요하죠?
-        * JavaScript에서도 프로그래밍을 할 때, 특히 Array 작업을 할 때 데이터를 넣고 빼는 작업을 할 때 스택과 큐를 사용합니다.
+- 스택: LIFO(Last In First Out), 가장 최근에 들어온 데이터가 가장 먼저 나가는 구조
+- 큐: FIFO(First In First Out), 가장 먼저 들어온 데이터가 가장 먼저 나가는 구조
 
 ### 2.1.2 스택과 큐의 구현
 
@@ -715,18 +556,14 @@ queue.pop();
 
 ### 2.1.3 스택과 큐의 문제
 
-- 문제 링크 : https://jsalgo.co.kr/?page=6#
+- 문제 이름: 샌드위치 포장
+- 문제 링크 : https://jsalgo.co.kr/?page=6
 
 ```js
-// 이 문제를 슬라이싱으로 풀면 아래 예제에서 오답이 나옵니다.
-// [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1]
-// [1, 2, 3, 4, 5, 6, 7, 8, 9].slice(-5)
-// [5, 6, 7, 8, 9] == [1, 2, 3, 4, 5, 6, 7, 8, 9].slice(-5)
-// JSON.stringify([5, 6, 7, 8, 9]) == JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9].slice(-5))
-
-// const comp = JSON.stringify
-// comp([5, 6, 7, 8, 9]) == comp([1, 2, 3, 4, 5, 6, 7, 8, 9].slice(-5))
-
+// [1, 2, 3, 4, 5, 6, 7, 8, 9].slice(-5) -> [5 6, 7, 8, 9]
+// 배열 비교
+// [1, 2, 3] === [1, 2, 3] -> false
+// JSON.stringify([1, 2, 3]) === JSON.stringify([1, 2, 3]) -> true
 function solution(data) {
   let stack = [];
   let sandwich_count = 0;
@@ -749,21 +586,19 @@ solution([1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1]);
 
 - 연결리스트는 보통 메모리 효율을 위해 사용합니다.
 - 주로 데이터 부분과 다음 노드를 가리키는 포인터로 구성되어 있습니다.
-- 뒤에서 할 모든 트리, 그래프 등의 심화 문제는 이 연결리스트가 기반이 됩니다.
+
 - 개념 : https://en.wikipedia.org/wiki/Linked_list
 - 알고리즘 시각화 : https://visualgo.net/ko
 
 ### 2.2.2 연결리스트의 구현
-
-- 여러분이 가장 친숙한 자료형으로 링크드리스트를 구현하고, 천천히 난이도를 높여가보도록 하겠습니다.
 
 #### 2.2.2.1 step1
 
 - object로 linked list를 구현합니다.
 
 ```js
+// step - object로 linked list를 구현합니다.
 // head -> 12 -> 99 -> 37
-
 const linkedList = {
   head: {
     data: 12,
@@ -776,16 +611,12 @@ const linkedList = {
     },
   },
 };
+console.log(linkedList(["head"]));
+console.log(linkedList.head.data); // 12
+console.log(linkedList.head.next.data); // 99
+console.log(linkedList.head.next.next.data); // 37
 
-console.log(linkedList["head"]);
-console.log(linkedList.head);
-linkedList.head.data;
-linkedList.head.next.data;
-linkedList.head.next.next.data;
-
-// 이렇게 해서 뭐가 좋은가요? array로 그냥 [12, 99, 37] 이렇게 만들면 편하지 않나요?
-// 아래 이미지를 확인해보세요.
-// https://www.mathwarehouse.com/programming/gifs/binary-search-tree.php#binary-search-tree-insertion-node
+// 이렇게 해서 뭐가 좋은가요?
 ```
 
 #### 2.2.2.2 step2
@@ -804,12 +635,12 @@ node2.next = node3;
 
 linkedList.head = node1;
 
-console.log(linkedList.head.data);
-console.log(linkedList.head.next.data);
-console.log(linkedList.head.next.next.data);
+console.log(linkedList.head.data); // 12
+console.log(linkedList.head.next.data); // 99
+console.log(linkedList.head.next.next.data); // 37
 ```
 
-#### 2.2.2.3 step3
+#### 2.2.2.2 step3
 
 - object로 linked list를 구현합니다.
 - 이번에는 순회를 해보겠습니다.
@@ -828,19 +659,18 @@ node3.next = node4;
 node4.next = node5;
 
 linkedList.head = node1;
-
 let current = linkedList.head;
+
 while (current) {
   console.log(current.data);
   current = current.next;
 }
 ```
 
-#### 2.2.2.4 step4
+#### 2.2.2.2 step4
 
 - object로 linked list를 구현합니다.
-- 이번에는 search를 합니다. 40이라는 값의 인덱스를 반복문 안에서 찾아야 합니다.(https://visualgo.net/en/list?slide=1)
-- 구현 시간은 8분을 드렸습니다. 가려서 라운지에 올려주세요.
+- 이번에는 search를 합니다. 40이라는 값의 인텍스를 반복문 안에서 찾아야 합니다.
 
 ```js
 let linkedList = { head: null };
@@ -860,20 +690,18 @@ linkedList.head = node1;
 let current = linkedList.head;
 let index = 0;
 while (current) {
-  console.log(index);
-  if (current.data === 40) {
+  if (current.data == 40) {
+    console.log(`index: ${index}`);
     break;
   }
   current = current.next;
   index++;
 }
-console.log(index);
 ```
 
 #### 2.2.2.5 step5
 
 - class로 linked list를 구현합니다.
-- 이번 챕터는 노드만 구현합니다.
 
 ```js
 class Node {
@@ -882,7 +710,6 @@ class Node {
     this.next = null;
   }
 }
-
 node1 = new Node(10);
 node2 = new Node(20);
 node3 = new Node(30);
@@ -895,7 +722,7 @@ node2.next = node3;
 #### 2.2.2.6 step6
 
 - class로 linked list를 구현합니다.
-- 이번 챕터에서는 자동으로 값이 연결되게 합니다.
+- 이번 챕터에서는 자동으로 값이 연결되게 합니다. (step5 자동화)
 
 ```js
 class Node {
@@ -904,46 +731,6 @@ class Node {
     this.next = null;
   }
 }
-
-class LinkedList {
-  constructor() {
-    let init = new Node("init");
-    this.head = init;
-    this.tail = init;
-  }
-
-  push(data) {
-    let newNode = new Node(data);
-    // 마지막 값은 새로운 노드가 되어야 합니다.
-    this.tail.next = newNode;
-    // 마지막 노드는 새로운 노드가 되어야 합니다.
-    this.tail = newNode;
-  }
-}
-
-l = new LinkedList();
-l.push(10);
-l.push(20);
-l.push(30);
-l.push(40);
-
-console.log(l.head.next.next.data);
-console.log(l.head.next.next.next.data);
-```
-
-#### 2.2.2.7 step7
-
-- class로 linked list를 구현합니다.
-- legth와 toString을 구현합니다.
-
-```js
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
 class LinkedList {
   constructor() {
     let init = new Node("init");
@@ -952,26 +739,27 @@ class LinkedList {
     this.length = 0;
     this.displayData = "";
   }
-
   push(data) {
     let newNode = new Node(data);
+    // 마지막 값은 새로운 노드가 되어야 합니다.
     this.tail.next = newNode;
+    // 마지막 노드는 새로운 노드가 되어야 합니다.
     this.tail = newNode;
     this.length++;
     this.displayData += `${data}, `;
   }
 
-  toString() {
-    return `<${this.displayData.slice(0, -2)}>`;
-  }
+  toString(){
+        return `<${this.displayData.slice(0, -2)}>`;
 }
-
 l = new LinkedList();
 l.push(10);
 l.push(20);
 l.push(30);
 l.push(40);
 
+console.log(l.head.next.next.data); // 20
+console.log(l.length);
 l.toString();
 ```
 
@@ -1011,7 +799,7 @@ class LinkedList {
       result += `${current.data}, `;
       current = current.next;
     }
-    return `<${result.slice(0, -2)}>`;
+    return `<${result.slice(0, -1)}>`;
   }
 }
 
@@ -1098,10 +886,10 @@ const list = {
   head: null,
 };
 
-let list1 = { data: 12, next: null, pre: null };
-let list2 = { data: 99, next: null, pre: null };
-let list3 = { data: 37, next: null, pre: null };
-let list4 = { data: 2, next: null, pre: null };
+let list1 = { value: 12, next: null, pre: null };
+let list2 = { value: 99, next: null, pre: null };
+let list3 = { value: 37, next: null, pre: null };
+let list4 = { value: 2, next: null, pre: null };
 
 list.head = list1;
 list1.next = list2;
@@ -1113,11 +901,11 @@ list2.pre = list1;
 list3.pre = list2;
 list4.pre = list3;
 
-list1.next.next.data;
+list1.next.next.value;
 // 37
-list3.pre.pre.data;
+list3.pre.pre.value;
 // 12
-list4.pre.pre.pre.next.next.data;
+list4.pre.pre.pre.next.next.value;
 // 37
 ```
 
@@ -1158,23 +946,23 @@ l.append(30);
 
 ## 쉬어가기 연습문제
 
-- 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120844
+- 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120844
+<!-- 회전시키기 문제 - 이어 붙이기 A+A -->
 
 ```js
 // rotate 문제입니다.
 // 이러한 문제는 이어붙이기로 쉽게 풀이가 가능할 수 있습니다.
-// [1, 2, 3] + [1, 2, 3] => '1,2,31,2,3'
+// [1, 2, 3] + [1, 2, 3] => '1,2,31,23'
 // [...arr, ...arr2] => [1, 2, 3, 1, 2, 3]
-function solution(data, direction) {
+
+function solution(numbers, direction) {
   if (direction === "right") {
-    const temp = data.pop();
-    data.unshift(temp);
-    return data;
+    const temp = numbers.pop();
   } else {
-    const temp = data.shift();
-    data.push(temp);
-    return data;
+    const temp = numbers.shift();
+    numbers.push(temp);
   }
+  return numbers;
 }
 
 function solution(numbers, direction) {
@@ -1185,48 +973,30 @@ function solution(numbers, direction) {
   }
   return numbers;
 }
-
-function solution(data, direction) {
+function solution(numbers, direction) {
   return direction === "right"
-    ? [data.pop(), ...data]
-    : [...data.slice(1), data.shift()];
+    ? [numbers.pop(), ...numbers]
+    : [...numbers.slice(1), numbers.shift()];
 }
 
-function solution(data, direction) {
-  const total = [...data, ...data];
+function solution(numbers, direction) {
+  const total = [...numbers, ...numbers];
   if (direction === "right") {
-    return total.slice(data.length - 1, -1);
+    return total.slice(numbers.length - 1, -1);
   } else {
-    return total.slice(1, 1 + data.length);
+    return total.slice(1, numbers.length + 1);
   }
 }
 
-solution([1, 2, 3], "right");
+print(solution([1, 2, 3], "right"));
 ```
 
-- 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120864
+- 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120864
 
 ```js
-// 특정 패턴 찾는 문제
-// "aAb1B2cC34oOp" => 37
-// "1a2b3c4d123Z" => 133
-
-// isNaN("1") => false
-// 틀린 답변, 왜냐하면 2자리, 3자리 등을 못찾습니다.
-function solution(s) {
-  let result = 0;
-  for (let i of s) {
-    if (!isNaN(i)) {
-      result += parseInt(i);
-    }
-  }
-  return result;
-}
-
-solution("aAb1B2cC34oOp");
-
-// 정규표현식 중 숫자만 찾는 방법
-// "aAb1B2cC34oOp".match(/\d+/g)
+// aAb1B2cC34oOp => 37
+// 1a2b3c4d123Z => 133
+// "aAb1B2cC34oOp".match(/\d+/g): 숫자 찾기
 // ["1", "2", "34"]
 
 function solution(s) {
@@ -1235,13 +1005,17 @@ function solution(s) {
 solution("aAb1B2cC34oOp");
 ```
 
+<!-- - 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120956 -->
+
 ## 2.3 트리와 그래프
 
-### 2.3.1 트리의 기본 형태
+- 우리가 구현할 트리
+  ![](tree만들기_트리순회_2.png)
 
 ```js
+// 초벌작업
 // 이진 트리의 기본형태
-// data
+// value
 // child - left
 // child - right
 const tree = {
@@ -1264,58 +1038,8 @@ const tree = {
 ### 2.3.2 트리의 구현
 
 - 위 형태를 참고해서 트리를 만들어주세요.
-  - 우리가 구현할 트리
-    ![](tree만들기_트리순회_2.png)
-  - 어제 했던 것처럼 object로 구현하셔도 되고, class로 구현하셔도 됩니다.
-  - 시간은 10분입니다.
-
-```js
-const tree = {
-  root: {
-    value: 5,
-    left: {
-      value: 3,
-      left: {
-        value: 1,
-        left: null,
-        right: null,
-      },
-      right: {
-        value: 4,
-        left: null,
-        right: null,
-      },
-    },
-    right: {
-      value: 8,
-      left: {
-        value: 6,
-        left: null,
-        right: null,
-      },
-      right: {
-        value: 9,
-        left: null,
-        right: null,
-      },
-    },
-  },
-};
-tree.root.value;
-5;
-tree.root.left.value;
-3;
-tree.root.left.left.value;
-1;
-tree.root.left.right.value;
-4;
-tree.root.right.value;
-8;
-tree.root.right.left.value;
-6;
-tree.root.right.right.value;
-9;
-```
+  ![](tree만들기_트리순회_2.png)
+- object, class
 
 ```js
 class Node {
@@ -1325,42 +1049,11 @@ class Node {
     this.right = null;
   }
 }
-let node1 = new Node(5);
-let node2 = new Node(3);
-let node3 = new Node(8);
-let node4 = new Node(1);
-let node5 = new Node(4);
-let node6 = new Node(6);
-let node7 = new Node(9);
-
-let root = node1;
-node1.left = node2;
-node1.right = node3;
-node2.left = node4;
-node2.right = node5;
-node3.left = node6;
-node3.right = node7;
-
-root.right.left.data;
-```
-
-- 트리의 class 구현 - 1 (데이터 추가)
-  - 완벽한 트리를 구현하는데 목표가 있지 않습니다.
-
-```js
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
-  }
-}
-
 class Tree {
   constructor(data) {
     this.init = new Node(data);
     this.root = this.init;
-    this.length = 0; // 노드의 갯수
+    this.length = 0; // 노드의 개수
   }
 
   add(data) {
@@ -1371,8 +1064,8 @@ class Tree {
         // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
         return;
       } else if (data < current.data) {
-        // 왼쪽으로 이동해야 합니다.
-        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+        // 왼쪽으로 내려가야 합니다.
+        // 이동한 곳에 데이터가 비어있으면 데이터를 넣고
         // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
         if (!current.left) {
           current.left = newNode;
@@ -1381,9 +1074,6 @@ class Tree {
         }
         current = current.left;
       } else if (data > current.data) {
-        // 오른쪽으로 이동해야 합니다.
-        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
-        // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
         if (!current.right) {
           current.right = newNode;
           this.length++;
@@ -1393,82 +1083,11 @@ class Tree {
       }
     }
   }
-}
-
-let t = new Tree(5);
-t.add(3);
-t.add(8);
-t.add(1);
-t.add(4);
-t.add(6);
-t.add(9);
-
-t.root.data;
-5;
-t.root.left.data;
-3;
-t.root.right.data;
-8;
-t.root.left.left.data;
-1;
-```
-
-- 트리의 class 구현 - 2 (트리의 순회)
-  - 완벽한 트리를 구현하는데 목표가 있지 않습니다.
-
-```js
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
-  }
-}
-
-class Tree {
-  constructor(data) {
-    this.init = new Node(data);
-    this.root = this.init;
-    this.length = 0; // 노드의 갯수
-  }
-
-  add(data) {
-    let newNode = new Node(data);
-    let current = this.root;
-    while (current) {
-      if (data == current.data) {
-        // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
-        return;
-      } else if (data < current.data) {
-        // 왼쪽으로 이동해야 합니다.
-        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
-        // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
-        if (!current.left) {
-          current.left = newNode;
-          this.length++;
-          return;
-        }
-        current = current.left;
-      } else if (data > current.data) {
-        // 오른쪽으로 이동해야 합니다.
-        // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
-        // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
-        if (!current.right) {
-          current.right = newNode;
-          this.length++;
-          return;
-        }
-        current = current.right;
-      }
-    }
-  }
-
   // 깊스너큐
   DFS() {
-    // 깊이우선탐색, DFS(Depth First Search)
-    // Stack 이용
-
-    let result = []; // 방문경로
+    // 깊이 우선 탐색, DFS(Depth First Search)
+    // 스택 이용
+    let result = []; // 방문 경로
     let stack = [this.root];
 
     while (stack.length !== 0) {
@@ -1481,15 +1100,13 @@ class Tree {
       }
       result.push(current.data);
     }
-
     return result;
   }
 
   BFS() {
-    // 너비우선탐색, BFS(Breadth First Search)
-    // Queue 이용
-
-    let result = []; // 방문경로
+    // 너비 우선 탐색, BFS(Breadth First Search)
+    // 큐 이용
+    let result = []; // 방문 경로
     let queue = [this.root];
 
     while (queue.length !== 0) {
@@ -1502,12 +1119,11 @@ class Tree {
       }
       result.push(current.data);
     }
-
     return result;
   }
 }
-
 let t = new Tree(5);
+
 t.add(3);
 t.add(8);
 t.add(1);
@@ -1533,87 +1149,33 @@ t.BFS();
     - 팀소트 : n, nlogn
 - 정렬 알고리즘을 작성할 때 주의사항
 
-### 2.4.1 공간 복잡도와 시간 복잡도
-
-- 시간 복잡도: 얼마나 많은 시간이 걸렸는지
-- 공간 복잡도: 얼마나 많은 공간이 필요했는지
-
-```js
-// 시간 복잡도 계산
-// O(n)
-const n = 10;
-for (let i = 0; i < n; i++) {
-  console.log(i);
-}
-
-// O(n^2)
-const n = 10;
-for (let i = 0; i < n; i++) {
-  for (let j = 0; j < n; j++) {
-    console.log(i, j);
-  }
-}
-
-// O(n^3)
-const n = 10;
-for (let i = 0; i < n; i++) {
-  for (let j = 0; j < n; j++) {
-    for (let k = 0; k < n; k++) {
-      console.log(i, j, k);
-    }
-  }
-}
-
-// O(n)
-// 주의!
-// O(3n) => O(n)
-// 상수는 항상 무시됩니다.
-const n = 10;
-for (let i = 0; i < n; i++) {
-  for (let j = 0; j < 3; j++) {
-    console.log(i, j);
-  }
-}
-```
-
 ### 2.4.2 선택정렬
 
 - 선택정렬은 가장 작은 것을 선택해서 앞으로 보내는 정렬입니다.
 
-* step 1
-
-```
+step 1
 전 = [199, 22, 33, 12, 32, 64, 72, 222, 233]
 후 = []
-```
 
-- step 2
+step 2
 
-```
 전 = [199, 22, 33, 32, 64, 72, 222, 233]
 후 = [12]
-```
 
-- step 3
+step 3
 
-```
 전 = [199, 33, 32, 64, 72, 222, 233]
 후 = [12, 22]
-```
 
-- step 4
+step 4
 
-```
 전 = [199, 33, 64, 72, 222, 233]
 후 = [12, 22, 32]
-```
 
-- step 5
+step 5
 
-```
 전 = [199, 64, 72, 222, 233]
 후 = [12, 22, 32, 33]
-```
 
 - 선택정렬 구현
 
@@ -1668,314 +1230,6 @@ console.log(selectionSort(입력값));
 
 ### 2.4.3 삽입정렬
 
-- 삽입정렬은 앞에서부터 차례대로 삽입될 위치를 찾아 끼어들기 하는 정렬입니다.
-
-* step 1
-
-```
-전 = [199, 22, 33, 12, 32, 64, 72, 222, 233]
-후 = []
-```
-
-- step 2
-
-```
-전 = [22, 33, 12, 32, 64, 72, 222, 233]
-후 = [199]
-```
-
-- step 3
-
-```
-전 = [33, 12, 32, 64, 72, 222, 233]
-후 = [22, 199]
-```
-
-- step 4
-
-```
-전 = [12, 32, 64, 72, 222, 233]
-후 = [22, 33, 199] // 이렇게 껴들려면 껴들 수 있는 index를 알아내야 합니다.
-```
-
-- step 5
-
-```
-전 = [32, 64, 72, 222, 233]
-후 = [12, 22, 33, 199]
-```
-
-- 구현코드
-
-```js
-let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
-let 정렬된배열 = [];
-let 배열의길이 = 입력값.length;
-
-function 삽입값이_들어갈_인덱스(정렬된배열, 삽입값) {
-  for (const i in 정렬된배열) {
-    if (삽입값 < 정렬된배열[i]) {
-      return i;
-    }
-  }
-  return 정렬된배열.length;
-}
-
-for (let i = 0; i < 배열의길이; i++) {
-  let 삽입값 = 입력값.shift();
-  let 인덱스 = 삽입값이_들어갈_인덱스(정렬된배열, 삽입값);
-  정렬된배열.splice(인덱스, 0, 삽입값);
-}
-
-console.log(정렬된배열);
-
-// 참고만 하고 가도록 하겠습니다.
-function insertIndex(sorted_arr, value) {
-  //삽입될 위치를 찾는 함수
-  for (let i in sorted_arr) {
-    if (value < sorted_arr[i]) {
-      return i;
-    }
-  }
-  return sorted_arr.length;
-}
-
-function insertSort(arr) {
-  let sorted_arr = [];
-
-  while (arr.length != 0) {
-    let value = arr.shift();
-    //삽입될 위치를 반환함
-    let index = insertIndex(sorted_arr, value);
-    //삽입될 위치에 값을 반환
-    sorted_arr.splice(index, 0, value);
-  }
-  return sorted_arr;
-}
-const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
-console.log(insertSort(arr));
-
-let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
-let 정렬된배열 = [];
-let 배열의길이 = 입력값.length;
-
-function insertIndex(sorted_arr, value) {
-  //삽입될 위치를 찾는 함수
-  for (let i in sorted_arr) {
-    if (value < sorted_arr[i]) {
-      return i;
-    }
-  }
-  return sorted_arr.length;
-}
-
-function insertSort(arr) {
-  let sorted_arr = [];
-
-  while (arr.length != 0) {
-    let [value, ...arr2] = arr;
-    arr = arr2;
-    //삽입될 위치를 반환함
-    let index = insertIndex(sorted_arr, value);
-    //삽입될 위치에 값을 반환
-    sorted_arr.splice(index, 0, value);
-  }
-  return sorted_arr;
-}
-const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
-console.log(insertSort(arr));
-```
-
-### 2.4.4 병합정렬
-
-- 병합정렬은 분할정복 알고리즘으로, 배열을 반으로 나누어 정렬하고 합치는 방식입니다.
-- Worst와 Best 모두 O(nlogn), 어떤 정렬보다 빠름, 동일 할 수 있음
-- 분할 정복(Divide and Conquer)
-
-- step
-
-```
-// 분할
-[5, 10, 66, 77, 54, 32, 11, 15]
-[5, 10, 66, 77], [54, 32, 11, 15]
-[5, 10], [66, 77], [54, 32], [11, 15]
-[5], [10], [66], [77], [54], [32], [11], [15]
-
-// 정복
-[5, 10], [66, 77], [32, 54], [11, 15]
-[5, 10, 66, 77], [11, 15, 32, 54]
-[5, 10, 11, 15, 32, 54, 66, 77]
-```
-
-- 구현코드
-
-* step 1
-
-```js
-let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
-
-function 병합정렬(입력배열) {
-  let 입력배열의길이 = 입력배열.length;
-  if (입력배열의길이 <= 1) {
-    return 입력배열;
-  }
-  let 중간값 = parseInt(입력배열의길이 / 2);
-  // ~~(입력배열의길이 / 2)와 같습니다.
-  let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
-  let 그룹둘 = 병합정렬(입력배열.slice(중간값));
-
-  return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
-}
-
-console.log(병합정렬(입력값));
-```
-
-- step 2
-
-```js
-let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
-
-function 병합정렬(입력배열) {
-  //분할
-  let 입력배열의길이 = 입력배열.length;
-  let 결과값 = [];
-  if (입력배열의길이 <= 1) {
-    return 입력배열;
-  }
-  let 중간값 = parseInt(입력배열의길이 / 2);
-  // ~~(입력배열의길이 / 2)와 같습니다.
-  let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
-  let 그룹둘 = 병합정렬(입력배열.slice(중간값));
-
-  // return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
-
-  //정복
-  while (그룹하나.length != 0 && 그룹둘.length != 0) {
-    if (그룹하나[0] < 그룹둘[0]) {
-      결과값.push(그룹하나.shift());
-    } else {
-      결과값.push(그룹둘.shift());
-    }
-  }
-  while (그룹하나.length != 0) {
-    결과값.push(그룹하나.shift());
-  }
-  while (그룹둘.length != 0) {
-    결과값.push(그룹둘.shift());
-  }
-
-  return 결과값;
-}
-
-console.log(병합정렬(입력값));
-```
-
-- 개선 코드
-
-```js
-let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
-
-function 병합정렬(입력배열) {
-  //분할
-  let 입력배열의길이 = 입력배열.length;
-  let 결과값 = [];
-  if (입력배열의길이 <= 1) {
-    return 입력배열;
-  }
-  let 중간값 = parseInt(입력배열의길이 / 2);
-  // ~~(입력배열의길이 / 2)와 같습니다.
-  let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
-  let 그룹둘 = 병합정렬(입력배열.slice(중간값));
-
-  // return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
-
-  //정복
-  while (그룹하나.length != 0 && 그룹둘.length != 0) {
-    if (그룹하나[0] < 그룹둘[0]) {
-      결과값.push(그룹하나.shift());
-    } else {
-      결과값.push(그룹둘.shift());
-    }
-  }
-
-  //개선된 코드
-  결과값 = [...결과값, ...그룹하나];
-  결과값 = [...결과값, ...그룹둘];
-
-  return 결과값;
-}
-
-console.log(병합정렬(입력값));
-```
-
-### 2.4.5 퀵정렬
-
-- best - O(nlog2n), worst - O(n\*\*2)
-- 피봇값(pivot)을 기준으로 정렬(피봇값은 처음값, 중간값, 마지막 값)
-- 실무에서는 worst일 경우를 피하기 위해 피봇을 랜덤하게 주는 경우나, 피봇을 2개 사용하는 경우도 있음.
-
-* step
-
-  ```
-  // 원본
-  [66, 77, 54, 32, 10, 5, 11, 15]
-
-  // step 1
-  // 피봇값 : 66
-  [54, 32, 10, 5, 11, 15] + [66] + [77]
-
-  // step 2
-  // 피봇값 : 54
-  [32, 10, 5, 11, 15] + [54] + [66] + [77]
-
-  // step 3
-  // 피봇값 : 32
-  [10, 5, 11, 15] + [32] + [54] + [66] + [77]
-
-  // step 4
-  // 피봇값 : 10
-  [5] + [10] + [11, 15] + [32] + [54] + [66] + [77]
-
-  // step 5
-  // 피봇값 : 11
-  [5] + [10] + [11] + [15] + [32] + [54] + [66] + [77]
-
-  [5, 10, 11, 15, 32, 54, 66, 77]
-  ```
-
-* 구현코드
-
-```js
-let 입력값 = [66, 77, 54, 32, 10, 5, 11, 15];
-
-function 퀵정렬(입력배열) {
-  let 입력배열의길이 = 입력배열.length;
-
-  if (입력배열의길이 <= 1) {
-    return 입력배열;
-  }
-
-  let 피벗값 = 입력배열.shift();
-  let 그룹하나 = [];
-  let 그룹둘 = [];
-
-  for (let i in 입력배열) {
-    if (입력배열[i] < 피벗값) {
-      그룹하나.push(입력배열[i]);
-    } else {
-      그룹둘.push(입력배열[i]);
-    }
-  }
-  console.log(
-    `그룹하나 : ${그룹하나}\n그룹둘 : ${그룹둘}\n피벗값 : ${피벗값}\n`
-  );
-
-  return 퀵정렬(그룹하나).concat(피벗값, 퀵정렬(그룹둘));
-}
-
-퀵정렬(입력값);
-```
-
 ### 2.4.6 코딩테스트에 나오는 정렬 유형
 
 ```js
@@ -1987,11 +1241,10 @@ data = [
   [82, 23, "hello"],
 ];
 
-// 0번째 인덱스로 정렬
-data.sort((a, b) => a[0] - b[0]);
-data.sort((a, b) => b[0] - a[0]);
+data.sort((a, b) => a[0] - b[0]); // 오름차순
+data.sort((a, b) => b[0] - a[0]); // 내림차순
 
-// 2번째 있는 글자의 글자수로 정렬
+// 2번째 있는 글자의 글자ㅏ수로 정렬
 data.sort((a, b) => a[2].length - b[2].length);
 
 // 국영수 점수와 이름
@@ -2003,17 +1256,14 @@ data = [
   [[82, 23, 22], "sun"],
 ];
 
-// 국영수 점수의 평균이 가장 높은 사람 순으로 사람만 출력해주세요.
-data.sort((a, b) => b[0].reduce() - a[0].reduce());
-data.sort(
-  (a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0)
+//국영수 점수의 평균이 가장 높은 사람 순으로 사람만 출력해주세요.
+let result = [];
+const sorted = data.sort(
+  (a, b) =>
+    b[0].reduce((acc, cal) => acc + cal) - a[0].reduce((acc, cal) => acc + cal)
 );
-const sorted_data = data.sort(
-  (a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0)
-);
-
-// 추출은 map입니다.
-sorted_data.map((data) => data[1]);
+sorted.forEach((v) => result.push(v[1]));
+console.log(result); // ['sun', 'licat', 'binky', 'mura', 'gary']
 
 data = [
   { name: "licat", age: 23 },
@@ -2029,96 +1279,97 @@ data.sort((a, b) => a.age - b.age);
 
 - 입사문제로 많이 나오는 데이터 추출 문제
 
-```
+```js
 [
   {
-    "_id": "b2c4ee1e-7a2c-47af-C027-6ade6be8ea5b",
-    "index": "1",
-    "name": "비태원",
-    "email": "user-co8qr7s@vel.net",
-    "phone": "010-8293-7909",
-    "country": "기니",
-    "address": "뚝섬로 60-1",
-    "job": "에너지공학기술자"
+    _id: "b2c4ee1e-7a2c-47af-C027-6ade6be8ea5b",
+    index: "1",
+    name: "비태원",
+    email: "user-co8qr7s@vel.net",
+    phone: "010-8293-7909",
+    country: "기니",
+    address: "뚝섬로 60-1",
+    job: "에너지공학기술자",
   },
   {
-    "_id": "2ef03b96-00b6-4d34-A402-9db92e7e6d79",
-    "index": "2",
-    "name": "석시유",
-    "email": "user-6fvcvay@proin.org",
-    "phone": "010-4813-4314",
-    "country": "이탈리아",
-    "address": "대림로 76-3",
-    "job": "군무원"
+    _id: "2ef03b96-00b6-4d34-A402-9db92e7e6d79",
+    index: "2",
+    name: "석시유",
+    email: "user-6fvcvay@proin.org",
+    phone: "010-4813-4314",
+    country: "이탈리아",
+    address: "대림로 76-3",
+    job: "군무원",
   },
   {
-    "_id": "dfcf47f4-baa2-4f5e-Ac81-0539556ebf3e",
-    "index": "3",
-    "name": "영지석",
-    "email": "user-yoeagh8@aenean.co.kr",
-    "phone": "010-9256-2158",
-    "country": "쿡 제도",
-    "address": "영등포로 24-8",
-    "job": "물리치료사"
-  }
-].map(data => data.job);
+    _id: "dfcf47f4-baa2-4f5e-Ac81-0539556ebf3e",
+    index: "3",
+    name: "영지석",
+    email: "user-yoeagh8@aenean.co.kr",
+    phone: "010-9256-2158",
+    country: "쿡 제도",
+    address: "영등포로 24-8",
+    job: "물리치료사",
+  },
+][
+  ({
+    _id: "b2c4ee1e-7a2c-47af-C027-6ade6be8ea5b",
+    index: "1",
+    name: "비태원",
+    email: "user-co8qr7s@vel.net",
+    phone: "010-8293-7909",
+    country: "기니",
+    address: "뚝섬로 60-1",
+    job: "에너지공학기술자",
+  },
+  {
+    _id: "2ef03b96-00b6-4d34-A402-9db92e7e6d79",
+    index: "2",
+    name: "석시유",
+    email: "user-6fvcvay@proin.org",
+    phone: "010-4813-4314",
+    country: "이탈리아",
+    address: "대림로 76-3",
+    job: "군무원",
+  },
+  {
+    _id: "dfcf47f4-baa2-4f5e-Ac81-0539556ebf3e",
+    index: "3",
+    name: "영지석",
+    email: "user-yoeagh8@aenean.co.kr",
+    phone: "010-9256-2158",
+    country: "쿡 제도",
+    address: "영등포로 24-8",
+    job: "물리치료사",
+  })
+].map((data) => data.job);
 ```
 
-### 2.4.7 코딩테스트 나오는 정렬 문제
+### 2.4.7 코딩 테스트에 나오는 정렬 문제
 
 - 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120835
 
 ```js
 function solution(emergency) {
+  var answer = [];
   // emergency: [3, 76, 24]
-  // sorted: [76, 24, 3]
+  // sorted:    [76, 24, 3]
+  // 두 개를 참조해서 새로운 배열을 만듦
   // 우리가 원하는 값: [3, 1, 2]
   let sorted = emergency.slice().sort((a, b) => b - a);
-  return emergency.map((data) => sorted.indexOf(data) + 1);
+  return emergency.map((data) => sorted.indexOf(data) + 1); // *복습하기
 }
-
-solution([3, 76, 24]);
+console.log(solution([3, 76, 24]));
 ```
 
-## 2.5 페이지 교체 알고리즘
+## 2.5 페이지 교체 알고리즘 <!-- 복습 필요 -->
 
 - https://www.notion.so/paullabworkspace/db83d9c4bbe6410ea208e6dc2daff07e
-- 페이지 교체 알고리즘 : 메모리를 효율적으로 사용하기 위해서 어떤 데이터를 메모리에 적재할지 결정하는 알고리즘
-- FIFO(오래된 녀석이 가장 빨리 나간다)
+- 예전에는 많이 출제됐는데, 요즘은 x
+
+- 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17680
 
 ```js
-// FIFO(시험에 나오지 않습니다.)
-['망치'] miss 5초
-['망치', '육각렌치'] miss 5초
-['망치', '육각렌치', '십자드라이버'] miss 5초
-// 여기서 망치를 사용한다면?
-['망치', '육각렌치', '십자드라이버'] hit 1초
-// 여기서 톱이 필요하다면?
-['육각렌치', '십자드라이버', '톱'] miss 5초
-
-// LRU(Least Recently Used, 시험에 나옵니다.)
-['망치'] miss 5초
-['망치', '육각렌치'] miss 5초
-['망치', '육각렌치', '십자드라이버'] miss 5초
-// 여기서 망치를 사용한다면?
-['육각렌치', '십자드라이버', '망치'] hit 1초
-// 여기서 만약 톱이 필요하다면?
-['십자드라이버', '망치', '톱'] miss 5초
-```
-
-### 2.5.1 LRU 알고리즘 구현
-
-- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17680
-
-```js
-// ["Jeju", "Pangyo", "Jeju", "Pangyo", "Seoul", "LA", "Pangyo", "NewYork"]
-// ["jeju"] miss 5초
-// ["jeju", "pangyo"] miss 5초
-// ["pangyo", "jeju"] hit 1초
-// ["jeju", "pangyo"] hit 1초
-// ["jeju", "pangyo", "seoul"] miss 5초
-// ...
-
 function solution(cacheSize, cities) {
   let time = 0;
   let cache = [];
@@ -2126,12 +1377,12 @@ function solution(cacheSize, cities) {
     let city = cities[i].toLowerCase();
     let idx = cache.indexOf(city);
     if (idx !== -1) {
-      //hit
+      // hit
       cache.splice(idx, 1);
       cache.push(city);
       time += 1;
     } else {
-      //miss
+      // miss
       cache.push(city);
       time += 5;
       if (cache.length > cacheSize) {
@@ -2147,13 +1398,9 @@ function solution(cacheSize, cities) {
 
 ### 2.6.1 슬라이딩 윈도우 알고리즘
 
-- 슬라이딩 윈도우: 윈도우 사이즈가 고정되어 있고, 이동하면서 최대값이나 최소값을 찾는 알고리즘
-
 ```js
 // 다음 중 연속된 3개의 합이 10인 것의 쌍을 출력하는 함수를 만들어주세요.
-// 메서드 체이닝으로 간소화 하진 않겠습니다.
-// zip, reduce사용해서 합을 구하고, filter를 사용해서 10인것을 골라낼 것입니다.
-data = [1, 4, 3, 3, 6, 8, 2, 7, 5, 4, 1, 3, 9, 1, 10];
+let data = [1, 4, 3, 3, 2, 6, 8, 2, 7, 5, 4, 1, 3, 9, 1, 10];
 
 function solution(data) {
   let result = [];
@@ -2165,91 +1412,24 @@ function solution(data) {
   }
   return result;
 }
-
+// 메서드 체이닝으로 묶으려면?
+// zip, reduce 사용해서 합을 구하고, filter를 사용해서 10인것을 골라낼 것입니다.
 solution(data);
 ```
 
-### 2.6.2 투 포인터 알고리즘
-
-- 투 포인터 알고리즘: 2개의 포인터를 이용해서 원하는 결과를 얻는 알고리즘
-
-```js
-// 다음 중 연속된 데이터의 합이 10인 것의 쌍을 출력하는 함수를 만들어주세요.
-[1, 4, 3, 2, 7, 3, 9, 1, 4, 3, 3, 1];
-```
+- 투 포인터 알고리즘: 2개의 포인터를 이용
+  // 다음 중 연속된 3개의 합이 10인 것의 쌍을 출력하는 함수를 만들어주세요.
+  let data = [1, 4, 3, 3, 2, 6, 8, 2, 7, 5, 4, 1, 3, 9, 1, 10];
 
 # 3. 카카오 코딩 테스트 문제 풀이
 
-## 3.1 비밀지도 문제
+## 3.1 2018년도 문제 풀이
 
-- 링크: https://programmers.co.kr/learn/courses/30/lessons/17681?language=javascript
+- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17681?language=javascript
 - 주제: 비트 연산, 논리 연산
-
-```
-n	    5
-arr1	[9, 20, 28, 18, 11]
-arr2	[30, 1, 21, 17, 28]
-
-    01001 (9)
-or  11110 (30)
----------
-    11111 => "#####"
-
-    10100 (20)
-or  00001 (1)
----------
-    10101 => "# # #"
-
-    11100 (28)
-or  10101 (21)
----------
-    11101 => "### #"
-
-["#####","# # #", "### #", "# ##", "#####"]
-```
 
 ```js
 // step1
-function solution(n, arr1, arr2) {
-  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-  for ([a, b] of zip(arr1, arr2)) {
-    console.log(a, b);
-  }
-}
-solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
-
-// step2
-function solution(n, arr1, arr2) {
-  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-  for ([a, b] of zip(arr1, arr2)) {
-    console.log(a | b);
-  }
-}
-solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
-
-// step3
-function solution(n, arr1, arr2) {
-  const result = [];
-  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-  for ([a, b] of zip(arr1, arr2)) {
-    result.push((a | b).toString(2));
-  }
-  return result;
-}
-solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
-
-// step4
-function solution(n, arr1, arr2) {
-  const result = [];
-  const zip = (a, b) => a.map((v, i) => [v, b[i]]);
-  for ([a, b] of zip(arr1, arr2)) {
-    result.push((a | b).toString(2).replace(/1/g, "#").replace(/0/g, " "));
-  }
-  return result;
-}
-solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
-
-// step5
 function solution(n, arr1, arr2) {
   answer = [];
   for (let i = 0; i < n; i++) {
@@ -2270,20 +1450,3 @@ solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
 ## 3.2 다트게임 문제
 
 - 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17682
-
-```js
-// 1S2D3T
-// 1^1 + 2^2 + 3^3
-// 3S2T3T
-// 3^1 + 2^3 + 3^3
-// 1D2S#10S
-// 1^2 + 2^1*(-1) + 10^1
-// 1D2S10S*
-// 1^2 + 2^1*2 + 10^1*2
-
-"1D2S10S*".match(/(\d+)([SDT])([\*\#]?)/g);
-
-for (let s of "1S2D3T") {
-  console.log(s);
-}
-```
