@@ -1,0 +1,8 @@
+dd {
+  display: none;
+  height: 0;
+  transition: all 0.3s;
+}
+dd.active {
+  display: block;
+}
