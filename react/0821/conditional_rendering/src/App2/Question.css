@@ -1,0 +1,11 @@
+div#root {
+  /* id 선택자를 통해 우선순위 높이기 */
+  /* 기본적으로 import 순서대로 적용, 그 다음 선택자 우선 */
+  background: pink;
+}
+h2 {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  color: lemonchiffon;
+}

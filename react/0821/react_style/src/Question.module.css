@@ -1,0 +1,13 @@
+.box {
+  background: pink;
+}
+
+.box p {
+  color: green;
+}
+.text {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  color: lemonchiffon;
+}
