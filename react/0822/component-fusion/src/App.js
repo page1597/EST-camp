@@ -52,7 +52,7 @@ function App() {
           lorem ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem
           ipsumlorem ipsumlorem ipsum
         </ProductDescription>
-        <ProductPrice price={1000} currencyCode="KRW" />
+        <ProductPrice price={1000} currencyCode="GBP" />
       </ContCard>
     </>
   );
