@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- <div class="container">
+        <h1 class="ir">테스트 페이지</h1>
+        <section>
+          <h2 class="section-title">섹션제목</h2>
+          <img src="img.jpg" alt="섹션이미지" class="section-img" />
+          <p class="section-contents">내용</p>
+        </section>
+      </div>-->
+    </div>
+    <script>
+      const $root = document.getElementById("root");
+
+      const $container = document.createElement("div");
+      $container.className = "container";
+      const $h1 = document.createElement("h1");
+      $h1.className = "ir";
+      $h1.textContent = "테스트 페이지";
+
+      $container.appendChild($h1);
+
+      const $section = document.createElement("section");
+
+      const $h2 = document.createElement("h2");
+      $h2.className = "section-title";
+      $h2.textContent = "섹션제목";
+      $section.appendChild($h2);
+
+      const $img = document.createElement("img");
+      $img.alt = "섹션이미지";
+      $img.className = "section-img";
+      $section.appendChild($img);
+
+      const $p = document.createElement("p");
+      $p.className = "section-contents";
+      $p.textContent = "내용";
+      $section.appendChild($p);
+
+      $container.appendChild($section);
+
+      $root.appendChild($container);
+    </script>
+  </body>
+</html>
