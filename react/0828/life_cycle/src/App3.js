@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 function App() {
   const [value, setValue] = useState(100);
@@ -16,7 +16,6 @@ function App() {
           width: value,
           height: value,
           backgroundColor: "blue",
-          //   transition: "1s all",
         }}
       ></div>
       <button
