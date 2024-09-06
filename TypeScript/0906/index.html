@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function add(a, b) {
+        if (typeof a == "number" && typeof b == "number") {
+          return a + b;
+        }
+        throw new TypeError("인자는 모두 숫자여야 합니다.");
+      }
+
+      const result = add(1, "2"); //에러발생! TypeError('인자는 모두 숫자여야 합니다.')
+      console.log(result);
+    </script>
+  </body>
+</html>
