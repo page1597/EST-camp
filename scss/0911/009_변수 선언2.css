@@ -1,0 +1,32 @@
+.test {
+  background-image: url("./asset/images/apple1.png");
+}
+
+.title1 {
+  font-size: 40px;
+}
+
+.title2 {
+  font-size: 80px;
+}
+
+.title3 {
+  font-size: 19px;
+}
+
+.title4 {
+  font-size: #f00;
+}
+
+.test1 {
+  font-size: 45px;
+  background-color: #f00;
+}
+
+.test2 {
+  background-color: #f00;
+}
+.test2 margin {
+  top: 40px;
+  bottom: 40px;
+}/*# sourceMappingURL=009_변수 선언.css.map */

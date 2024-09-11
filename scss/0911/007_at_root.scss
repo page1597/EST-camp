@@ -1,0 +1,13 @@
+.one {
+  color: blue;
+  .two {
+    color: red;
+    .three {
+      color: yellow;
+      // four가 앞으로 빠져나감
+      @at-root .four {
+        color: green;
+      }
+    }
+  }
+}

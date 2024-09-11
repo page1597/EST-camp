@@ -1,0 +1,20 @@
+// 일반 CSS에서도 네이스팅 + & 사용 가능 (23년 10월 대부분 브라우저에 도입)
+// .box {
+//     &:focus{} // 가상선택자
+//     &:hover{}
+//     &:active{}
+//     &:first-child{}
+//     &:nth-child(2){}
+//     &::after{} // 가상요소
+//     &::before{}
+// }
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  &:hover {
+    height: 200px;
+    width: 200px;
+    background-color: blue;
+  }
+}
