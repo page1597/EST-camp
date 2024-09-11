@@ -1,27 +1,23 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin"); // 올바르게 모듈 가져오기
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./index.ts",
-  module: {
-    rules: [
-      {
-        test: /\.ts$/, // TypeScript 파일을 처리하도록 설정
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
+  entry: path.resolve(__dirname, "index.ts"),
+  output: {
+    path: path.resolve(__dirname, "dist/"),
+    filename: "app.js",
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"], // 파일 확장자 추가
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
-  output: {
-    filename: "index.js",
-    path: path.resolve(__dirname, "dist"),
+  module: {
+    rules: [{ test: /\.ts$/, use: "ts-loader" }],
   },
+  mode: "production",
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "index.html"), // 템플릿 파일의 경로 설정
+      template: path.resolve(__dirname, "./index.html"),
     }),
   ],
+  watch: true,
 };
