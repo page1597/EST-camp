@@ -3,9 +3,11 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Header from "./components/header/Header";
-import useAuthContext from "./hooks/useAuthContext";
+import { useAuthContext } from "./hooks/useAuthContext";
+
 function App() {
   const { isAuthReady, user } = useAuthContext();
+
   return (
     <div>
       {isAuthReady ? (
@@ -29,7 +31,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       ) : (
-        "로딩중"
+        "로딩중 입니다..."
       )}
     </div>
   );

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function xhrRequest() {
+        const requestObj = new XMLHttpRequest();
+        requestObj.open("GET", "hello.txt");
+        requestObj.onreadystatechange = () => {
+          if (requestObj.readyState === 4 && requestObj.status === 200) {
+            result = requestObj.responseText;
+            console.log(result); // result가 바로 들어옴
+          }
+        };
+        requestObj.send();
+      }
+      xhrRequest();
+
+      console.log(result); // undefine
+    </script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { appAuth } from "../firebase/config";
-import useAuthContext from "./useAuthContext";
+import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {
   // 에러상태를 관리합니다.

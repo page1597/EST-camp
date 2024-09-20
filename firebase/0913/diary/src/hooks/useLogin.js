@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useAuthContext from "./useAuthContext";
+import { useAuthContext } from "./useAuthContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { appAuth } from "../firebase/config";
 
@@ -15,6 +15,7 @@ export const useLogin = () => {
 
   const login = (email, password) => {
     setIsPending(true);
+
     signInWithEmailAndPassword(appAuth, email, password)
       .then((userCredential) => {
         // Signed in
